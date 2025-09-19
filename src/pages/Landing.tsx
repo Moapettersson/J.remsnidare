@@ -15,6 +15,7 @@ const Landing = () => {
       >
         <div className="absolute inset-0 bg-gradient-hero"></div>
         <div className="relative z-10 text-center text-white px-4 max-w-4xl">
+          <div className="font-roussou text-3xl md:text-4xl mb-4 tracking-wide">Sadelmakeriet</div>
           <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Traditionellt
             <br />

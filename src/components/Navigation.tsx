@@ -23,8 +23,8 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="font-playfair font-bold text-xl text-primary">
-              Läderhantverk
+            <div className="font-roussou text-2xl text-primary tracking-wide">
+              Sadelmakeriet
             </div>
           </Link>
 

@@ -24,11 +24,11 @@ const About = () => {
   ];
 
   const milestones = [
-    {
-      year: "1985",
-      title: "Början på resan",
-      description: "Första sadelmakeriet öppnas med fokus på kvalitet och hantverk"
-    },
+      {
+        year: "1985",
+        title: "Sadelmakeriet grundas",
+        description: "Första sadelmakeriet öppnas med fokus på kvalitet och hantverk"
+      },
     {
       year: "1995",
       title: "Expansion",
@@ -102,10 +102,10 @@ const About = () => {
                 </p>
               </div>
               <div className="mt-8">
-                <p className="font-playfair text-xl text-primary italic">
-                  "Hantverk handlar inte bara om teknik - det handlar om att sätta sin själ i varje stygn."
-                </p>
-                <p className="text-muted-foreground mt-2">— Mäster Lars, Grundare</p>
+              <p className="font-playfair text-xl text-primary italic">
+                "Hantverk handlar inte bara om teknik - det handlar om att sätta sin själ i varje stygn."
+              </p>
+              <p className="text-muted-foreground mt-2">— Lars, Grundare av Sadelmakeriet</p>
               </div>
             </div>
             <div className="space-y-6">
@@ -143,7 +143,7 @@ const About = () => {
                   </div>
                   <div className="flex items-center">
                     <Mail className="h-5 w-5 text-primary mr-3" />
-                    <span>info@laderhantverk.se</span>
+                    <span>info@sadelmakeriet.se</span>
                   </div>
                 </div>
               </Card>
