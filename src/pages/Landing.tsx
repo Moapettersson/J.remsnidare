@@ -2,38 +2,37 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { ArrowRight, Users, ShoppingBag, GraduationCap, Heart } from "lucide-react";
-import heroImage from "@/assets/hero-leather-workshop.jpg";
 import saddleImage from "@/assets/saddle-closeup.jpg";
 
 const Landing = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section 
-        className="relative h-screen flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-hero"></div>
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl">
-          <div className="font-roussou text-3xl md:text-4xl mb-4 tracking-wide">Sadelmakeriet</div>
-          <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Traditionellt
-            <br />
-            <span className="text-secondary">Läderhantverk</span>
+        <section 
+        className="relative h-screen flex items-center justify-center bg-background">
+
+          <div className="relative z-10 text-center px-4 max-w-4xl ">
+           <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight">
+            Sadelmakeriet
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed">
-            Kvalitet, tradition och passion förenad i varje stygn. 
-            Sedan generationer skapar vi unika läderarbeten för hem och profession.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <p className="text-xl font-sans md:text-2xl mb-8 text-[hsl(var(--text))] max-w-2xl mx-auto leading-relaxed">
+              Tradition och förnyelse. 
+            </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center var(--background)">
             <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
               <Link to="/showroom">
-                Upptäck vårt arbete <ArrowRight className="ml-2 h-5 w-5" />
+                Showroom <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white hover:text-primary">
-              <Link to="/kurser">
-                Lär dig hantverket
+              <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
+              <Link to="/Shop">
+                Webbshop <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+             <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
+              <Link to="/Courses">
+                Kurser <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </div>
@@ -41,7 +40,7 @@ const Landing = () => {
       </section>
 
       {/* Services Overview */}
-      <section className="py-20 bg-gradient-warm">
+      {/*<section className="py-20 bg-gradient-warm">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
@@ -108,9 +107,9 @@ const Landing = () => {
           </div>
         </div>
       </section>
-
+      */}
       {/* Featured Work */}
-      <section className="py-20">
+      {/*<section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -145,7 +144,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

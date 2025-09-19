@@ -1,127 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Leather Craft Design System - Artisanal & Timeless */
 
+/* Font */
+@font-face {
+  font-family: 'Rousseau Deco';
+  src: url('./fonts/Rousseau Deco.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Root colors */
+:root {
+  --text: #7b523e;
+  --background: #fffefa;
+  --primary: #7c5442;
+  --secondary: #e9e3d8;
+  --accent: #876147;
+
+  --foreground: var(--text);
+  --primary-foreground: var(--background);
+  --secondary-foreground: var(--text);
+  --accent-foreground: var(--background);
+
+  --border: 30 20% 88%;
+  --input: 30 20% 88%;
+  --ring: 25 45% 25%;
+
+  --gradient-leather: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  --gradient-warm: linear-gradient(180deg, var(--background), var(--secondary));
+  --gradient-hero: linear-gradient(135deg, var(--foreground) / 0.8, var(--primary) / 0.6);
+
+  --shadow-craft: 0 4px 20px hsl(var(--primary) / 0.15);
+  --shadow-elegant: 0 8px 30px hsl(var(--foreground) / 0.12);
+  --shadow-subtle: 0 2px 10px hsl(var(--secondary) / 0.8);
+
+  --radius: 0.75rem;
+}
+
+/* Dark mode */
+.dark {
+  --background: #3a261d;
+  --foreground: #fffefa;
+  --primary: #603d2f;
+  --secondary: #e9e3d8;
+  --accent: #70492f;
+}
+
+/* Base styles */
 @layer base {
-  :root {
-    /* Core leather craft palette */
-    --background: 32 25% 97%; /* Warm cream/beige */
-    --foreground: 25 35% 20%; /* Deep leather brown */
-
-    /* Card styling */
-    --card: 32 40% 98%; /* Slightly warmer white */
-    --card-foreground: 25 35% 20%;
-
-    /* Popover styling */
-    --popover: 32 40% 98%;
-    --popover-foreground: 25 35% 20%;
-
-    /* Primary - Rich leather brown */
-    --primary: 25 45% 25%; /* Deep saddle brown */
-    --primary-foreground: 32 25% 97%;
-
-    /* Secondary - Soft leather tones */
-    --secondary: 30 20% 92%; /* Light leather beige */
-    --secondary-foreground: 25 35% 20%;
-
-    /* Muted tones */
-    --muted: 30 15% 90%; /* Subtle beige */
-    --muted-foreground: 25 25% 45%; /* Medium brown */
-
-    /* Accent - Warm brown */
-    --accent: 28 30% 85%; /* Warm tan */
-    --accent-foreground: 25 45% 25%;
-
-    /* Destructive */
-    --destructive: 0 70% 55%;
-    --destructive-foreground: 32 25% 97%;
-
-    /* Borders and inputs */
-    --border: 30 20% 88%; /* Soft beige border */
-    --input: 30 20% 88%;
-    --ring: 25 45% 25%; /* Focus ring matches primary */
-
-    /* Craft-inspired gradients */
-    --gradient-leather: linear-gradient(135deg, hsl(25 45% 25%), hsl(28 40% 35%));
-    --gradient-warm: linear-gradient(180deg, hsl(32 25% 97%), hsl(30 20% 92%));
-    --gradient-hero: linear-gradient(135deg, hsl(25 35% 20% / 0.8), hsl(25 45% 25% / 0.6));
-
-    /* Shadows for depth */
-    --shadow-craft: 0 4px 20px hsl(25 45% 25% / 0.15);
-    --shadow-elegant: 0 8px 30px hsl(25 35% 20% / 0.12);
-    --shadow-subtle: 0 2px 10px hsl(30 20% 88% / 0.8);
-
-    /* Spacing and radius */
-    --radius: 0.75rem; /* Slightly more rounded for warmth */
-
-    /* Typography scaling */
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  body {
+    @apply bg-background text-foreground font-sans;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
   }
 
-  /* Custom craft-themed components */
+  .logo-text {
+    @apply font-logo;
+  }
+
   .hero-section {
     background: var(--gradient-warm);
   }
 
   .leather-card {
-    background: var(--card);
+    background: var(--secondary);
     box-shadow: var(--shadow-craft);
     border: 1px solid hsl(var(--border));
     transition: all 0.3s ease;
@@ -130,23 +77,5 @@
   .leather-card:hover {
     box-shadow: var(--shadow-elegant);
     transform: translateY(-2px);
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground font-inter;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair;
-  }
-
-  .logo-text {
-    @apply font-roussou;
   }
 }

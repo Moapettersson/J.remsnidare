@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import  Footer  from "@/components/ui/footer";
 import { useState } from "react";
 import { ShoppingCart, Star, Filter, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -108,7 +109,7 @@ const Shop = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-warm">
+           <section className="py-20" style={{ backgroundColor: "var(--background)" }}>
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <Badge className="mb-4 bg-primary/10 text-primary">Handgjort med kärlek</Badge>
@@ -243,6 +244,7 @@ const Shop = () => {
           </div>
         </div>
       </section>
+        <Footer />
     </div>
   );
 };

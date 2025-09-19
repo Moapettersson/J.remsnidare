@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import  Footer  from "@/components/ui/footer";
 import { Calendar, Clock, Users, Star, ArrowRight } from "lucide-react";
 import courseImage from "@/assets/leather-course.jpg";
 
@@ -88,20 +89,18 @@ const Courses = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section 
-        className="relative py-24 bg-cover bg-center"
-        style={{ backgroundImage: `url(${courseImage})` }}
-      >
+           <section className="py-20" style={{ backgroundColor: "var(--background)" }}>
+      
         <div className="absolute inset-0 bg-gradient-hero"></div>
         <div className="relative z-10 container mx-auto px-4">
-          <div className="max-w-3xl text-white">
+          <div className="max-w-3xl var(--text)">
             <Badge className="mb-4 bg-white/20 text-white border-white">Lär dig hantverket</Badge>
-            <h1 className="font-playfair text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="font-playfair text-5xl md:text-6xl font-bold mb-6 var(--text)">
               Kurser i
               <br />
               <span className="text-secondary">Läderhantverk</span>
             </h1>
-            <p className="text-xl leading-relaxed mb-8 text-white/90">
+            <p className="text-xl leading-relaxed  var(--text)">
               Upptäck konsten att arbeta med läder. Våra kurser passar alla nivåer - 
               från nybörjare till de som vill fördjupa sina kunskaper inom traditionellt hantverk.
             </p>
@@ -113,7 +112,7 @@ const Courses = () => {
       </section>
 
       {/* Course Grid */}
-      <section className="py-20">
+      <section className="py-20" style={{ backgroundColor: "var(--background)" }}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-4xl font-bold text-primary mb-4">
@@ -229,28 +228,8 @@ const Courses = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 text-center">
-          <Card className="leather-card p-12 max-w-3xl mx-auto">
-            <h3 className="font-playfair text-3xl font-bold mb-4">
-              Har du frågor om våra kurser?
-            </h3>
-            <p className="text-lg text-muted-foreground mb-8">
-              Kontakta oss för mer information eller för att diskutera 
-              skräddarsydda kurser för grupper.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                Kontakta oss
-              </Button>
-              <Button size="lg" variant="outline">
-                Ring: +46 XXX XX XX XX
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </section>
+    <Footer/>
+      
     </div>
   );
 };

@@ -54,19 +54,17 @@ const About = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section 
-        className="relative py-24 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
+      <section className="py-20" style={{ backgroundColor: "var(--background)" }}>
+      
         <div className="absolute inset-0 bg-gradient-hero"></div>
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <Badge className="mb-4 bg-white/20 text-white border-white">Vår berättelse</Badge>
-          <h1 className="font-playfair text-5xl md:text-6xl font-bold text-white mb-6">
-            Passion för
+          <Badge className="mb-4 bg-white/20 var(--text) border-white">Vår berättelse</Badge>
+          <h1 className="font-playfair text-5xl md:text-6xl font-bold var(--text) mb-6">
+            Läderhantverket
             <br />
-            <span className="text-secondary">Läderhantverk</span>
+
           </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed var(--text)">
             Sedan 1985 har vi dedikerat oss åt att bevara och utveckla den traditionella 
             konsten att arbeta med läder. Vår resa började som en dröm och har vuxit 
             till en livslång passion.
@@ -75,12 +73,12 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-20">
+            <section className="py-20" style={{ backgroundColor: "var(--background)" }}>
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="font-playfair text-4xl font-bold text-primary mb-6">
-                Mästarens berättelse
+                Sadelmakaren berättar 
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
@@ -109,7 +107,7 @@ const About = () => {
               </div>
             </div>
             <div className="space-y-6">
-              <Card className="leather-card p-6">
+             {/* <Card className="leather-card p-6">
                 <h3 className="font-playfair text-xl font-semibold mb-4">Vårt hantverk i siffror</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center">
@@ -128,9 +126,9 @@ const About = () => {
                     <div className="font-bold text-3xl text-primary">100+</div>
                     <div className="text-sm text-muted-foreground">Projekt årligen</div>
                   </div>
-                </div>
-              </Card>
-              <Card className="leather-card p-6">
+                </div>*/}
+           
+             {/* <Card className="leather-card p-6">
                 <h3 className="font-playfair text-xl font-semibold mb-4">Kontakta oss</h3>
                 <div className="space-y-3">
                   <div className="flex items-center">
@@ -146,13 +144,13 @@ const About = () => {
                     <span>info@sadelmakeriet.se</span>
                   </div>
                 </div>
-              </Card>
+              </Card> */}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Values Section 
       <section className="py-20 bg-gradient-warm">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -183,7 +181,7 @@ const About = () => {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Timeline */}
       <section className="py-20">
