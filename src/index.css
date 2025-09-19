@@ -2,41 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Leather Craft Design System - Artisanal & Timeless */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core leather craft palette */
+    --background: 32 25% 97%; /* Warm cream/beige */
+    --foreground: 25 35% 20%; /* Deep leather brown */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card styling */
+    --card: 32 40% 98%; /* Slightly warmer white */
+    --card-foreground: 25 35% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover styling */
+    --popover: 32 40% 98%;
+    --popover-foreground: 25 35% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Rich leather brown */
+    --primary: 25 45% 25%; /* Deep saddle brown */
+    --primary-foreground: 32 25% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Soft leather tones */
+    --secondary: 30 20% 92%; /* Light leather beige */
+    --secondary-foreground: 25 35% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted tones */
+    --muted: 30 15% 90%; /* Subtle beige */
+    --muted-foreground: 25 25% 45%; /* Medium brown */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Warm brown */
+    --accent: 28 30% 85%; /* Warm tan */
+    --accent-foreground: 25 45% 25%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive */
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 32 25% 97%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs */
+    --border: 30 20% 88%; /* Soft beige border */
+    --input: 30 20% 88%;
+    --ring: 25 45% 25%; /* Focus ring matches primary */
 
-    --radius: 0.5rem;
+    /* Craft-inspired gradients */
+    --gradient-leather: linear-gradient(135deg, hsl(25 45% 25%), hsl(28 40% 35%));
+    --gradient-warm: linear-gradient(180deg, hsl(32 25% 97%), hsl(30 20% 92%));
+    --gradient-hero: linear-gradient(135deg, hsl(25 35% 20% / 0.8), hsl(25 45% 25% / 0.6));
+
+    /* Shadows for depth */
+    --shadow-craft: 0 4px 20px hsl(25 45% 25% / 0.15);
+    --shadow-elegant: 0 8px 30px hsl(25 35% 20% / 0.12);
+    --shadow-subtle: 0 2px 10px hsl(30 20% 88% / 0.8);
+
+    /* Spacing and radius */
+    --radius: 0.75rem; /* Slightly more rounded for warmth */
+
+    /* Typography scaling */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
 
     --sidebar-background: 0 0% 98%;
 
@@ -92,6 +114,23 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  /* Custom craft-themed components */
+  .hero-section {
+    background: var(--gradient-warm);
+  }
+
+  .leather-card {
+    background: var(--card);
+    box-shadow: var(--shadow-craft);
+    border: 1px solid hsl(var(--border));
+    transition: all 0.3s ease;
+  }
+
+  .leather-card:hover {
+    box-shadow: var(--shadow-elegant);
+    transform: translateY(-2px);
+  }
 }
 
 @layer base {
@@ -100,6 +139,10 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-['Inter',sans-serif];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Playfair_Display',serif];
   }
 }
