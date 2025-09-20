@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import Footer from "@/components/ui/footer";
 import { ArrowRight } from "lucide-react";
 
-import furnitureImage1 from "@/assets/showroom/table.jpg";
-import furnitureImage2 from "@/assets/showroom/bathroom.jpg";
+import furnitureImage1 from "@/assets/showroom/shaire.png";
+import furnitureImage4 from "@/assets/showroom/door.jpg";
 import furnitureImage3 from "@/assets/showroom/computer.jpg";
-import furnitureImage4 from "@/assets/showroom/sofa.jpg";
+import furnitureImage2 from "@/assets/showroom/table.png";
 
 const projects = [
   { 
@@ -39,7 +39,8 @@ const Showroom = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 text-center">
+      <section className="py-20 relative pt-20 pb-16 text-center" style={{ backgroundColor: "var(--background)" }}>
+   
         <h1 className="font-playfair text-6xl md:text-7xl font-bold mb-4">Showroom</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Utforska våra projekt och hur vi förvandlar rum med läder och möbler.
