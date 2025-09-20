@@ -17,7 +17,7 @@
 ------------------------- */
 @font-face {
   font-family: 'Rousseau Deco';
-  src: url('/src/assets/fonts/Rousseau-Deco.ttf') format('truetype');
+  src: url('/fonts/Rousseau Deco/RousseauDeco.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -31,6 +31,7 @@
   --primary: #7c5442;
   --secondary: #e9e3d8;
   --accent: #876147;
+  --logo-text: #200f04;
 
   --foreground: var(--text);
   --primary-foreground: var(--background);

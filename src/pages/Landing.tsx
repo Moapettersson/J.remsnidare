@@ -12,7 +12,7 @@ const Landing = () => {
         className="relative h-screen flex items-center justify-center bg-background">
 
           <div className="relative z-10 text-center px-4 max-w-4xl ">
-           <h1 className="font-montserrat text-5xl md:text-7xl mb-6 leading-tight">
+           <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">
             Sadelmakeriet
           </h1>
             <p className="text-xl font-montserrat md:text-2xl mb-8 text-[hsl(var(--text))] max-w-2xl mx-auto leading-relaxed">

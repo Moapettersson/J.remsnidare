@@ -47,6 +47,7 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        "logo-text": "#200f04",
       },
       backgroundImage: {
         "gradient-leather": "var(--gradient-leather)",
