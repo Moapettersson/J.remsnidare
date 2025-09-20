@@ -1,18 +1,30 @@
+/* -------------------------
+   Import Google Fonts
+------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* -------------------------
+   Tailwind base
+------------------------- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-/* Font */
+/* -------------------------
+   Custom font: Rousseau Deco
+   (lägg filen i: src/assets/fonts/Rousseau-Deco.ttf)
+------------------------- */
 @font-face {
   font-family: 'Rousseau Deco';
-  src: url('./fonts/Rousseau Deco.ttf') format('truetype');
+  src: url('/src/assets/fonts/Rousseau-Deco.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-/* Root colors */
+/* -------------------------
+   CSS Variables (colors, shadows, etc.)
+------------------------- */
 :root {
   --text: #7b523e;
   --background: #fffefa;
@@ -40,7 +52,9 @@
   --radius: 0.75rem;
 }
 
-/* Dark mode */
+/* -------------------------
+   Dark Mode
+------------------------- */
 .dark {
   --background: #3a261d;
   --foreground: #fffefa;
@@ -49,14 +63,16 @@
   --accent: #70492f;
 }
 
-/* Base styles */
+/* -------------------------
+   Base styles
+------------------------- */
 @layer base {
   body {
     @apply bg-background text-foreground font-sans;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair;
+    @apply font-logo;
   }
 
   .logo-text {

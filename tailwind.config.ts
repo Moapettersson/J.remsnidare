@@ -25,6 +25,8 @@ export default {
         inter: ["Inter", "sans-serif"],
         sans: ['Raleway', 'ui-sans-serif', 'system-ui'], // ersätter standard sans
         logo: ["Rousseau Deco", "serif"],
+        montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui'], // ny font
+        
       },
       colors: {
         text: "hsl(var(--text))",
