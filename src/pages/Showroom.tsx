@@ -5,16 +5,16 @@ import Footer from "@/components/ui/footer";
 import { ArrowRight } from "lucide-react";
 
 import furnitureImage1 from "@/assets/showroom/shaire.png";
-import furnitureImage4 from "@/assets/showroom/door.jpg";
-import furnitureImage3 from "@/assets/showroom/computer.jpg";
-import furnitureImage2 from "@/assets/showroom/table.png";
+import furnitureImage2 from "@/assets/showroom/lamp.png";
+import furnitureImage4 from "@/assets/showroom/computer.jpg";
+import furnitureImage3 from "@/assets/showroom/table.png";
 
 const projects = [
   { 
     image: furnitureImage1, 
     title: "Projekt 1", 
     category: "För Professionella", 
-    text:  <p>"Vi hjälper arkitekter och designers att skapa exklusiva miljöer med läder och skräddarsydda möbler."</p>
+    text:  <p>"Elegant komfort i tidlös design."</p>
   },
   { 
     image: furnitureImage2, 
@@ -26,13 +26,13 @@ const projects = [
     image: furnitureImage3, 
     title: "Projekt 3", 
     category: "Möbler & Läder", 
-    text: <p>"Tidlöst fokus"</p>
+    text: <p>"Vi hjälper arkitekter och designers att skapa exklusiva miljöer med läder och skräddarsydda möbler"</p>
   },
   { 
     image: furnitureImage4, 
     title: "Projekt 4", 
     category: "Kontorsmiljö", 
-    text: <p>"Vi hjälper arkitekter och designers att skapa exklusiva miljöer med läder och skräddarsydda möbler."</p>
+    text: <p>"Tidlöst fokus"</p>
   },
 ];
 
@@ -51,7 +51,7 @@ const Showroom = () => {
 
       {/* Text */}
       <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-        Utforska våra projekt och hur vi förvandlar rum med läder och möbler.
+       Läder i inredning, till hem och arbetsplats. Bara fantasin sätter gränser. Hör av dig för att boka en konsultation så förvandlar vi din ide till verklighet.
       </p>
 
       {/* CEntrerad knapp */}

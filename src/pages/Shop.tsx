@@ -39,25 +39,29 @@ const Shop = () => {
   } | order(name asc)`;
 
   // Hämta data från Sanity
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const [productsData, categoriesData] = await Promise.all([
-          client.fetch(productsQuery),
-          client.fetch(categoriesQuery)
-        ]);
-        setProducts(productsData);
-        setCategories(categoriesData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+// Hämta data från Sanity
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      console.log('🔍 Försöker hämta data från Sanity...'); // ← NYTT
+      const [productsData, categoriesData] = await Promise.all([
+        client.fetch(productsQuery),
+        client.fetch(categoriesQuery)
+      ]);
+      console.log('📦 Produkter:', productsData); // ← NYTT
+      console.log('🏷️ Kategorier:', categoriesData); // ← NYTT
+      setProducts(productsData);
+      setCategories(categoriesData);
+    } catch (error) {
+      console.error('❌ Fel vid hämtning:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchData();
-  }, []);
+  fetchData();
+}, []);
 
   // Skapa grupper baserat på kategorier från Sanity + "Alla"
   const groups = [
@@ -76,7 +80,7 @@ const Shop = () => {
       );
 
   const googleFormLink =
-    "https://docs.google.com/forms/d/e/1FAIpQLSd35Iup_nlptG-ODKW089-l7iT_y16tMiLd_c4xodFR5PKhBA/viewform?usp=header";
+    "https://docs.google.com/forms/d/e/1FAIpQLSfRLT8kS_mucH9NrZbjw3_1cPgW3wdNf3w2iUDYMpsrmyZePA/viewform?usp=header";
 
   if (loading) {
     return (
@@ -87,33 +91,21 @@ const Shop = () => {
     );
   }
 
-return (
-  <div className="min-h-screen relative">
-    {/* Hero Section */}
-    <section
-      className="py-20 relative pt-20 pb-16 text-center"
-      style={{
-        backgroundImage: "url('/din-bakgrundsbild.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="max-w-3xl mx-auto">
-        <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">
-          Produkter
-        </h1>
-        <p className="text-xl text-muted-foreground leading-relaxed">
-          Upptäck vårt utbud av handgjorda läderprodukter.
-        </p>
-      </div>
-
-      {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-          <Loader2 className="h-10 w-10 animate-spin text-white" />
-          <span className="ml-2 text-white">Laddar produkter...</span>
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="py-20 relative pt-20 pb-10 text-center"
+      style={{ backgroundColor: "var(--background)" }}>
+        <div className="max-w-3xl mx-auto">
+          <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text hover:text-logo-text/80 transition-colors duration-300">
+            Produkter
+          </h1>
+          <p className="text-xl text-muted-foreground leading-relaxed hover:text-foreground transition-colors duration-300">
+            Upptäck vårt utbud av handgjorda läderprodukter – varje artikel är unik och skapad med traditionella tekniker och modern design.
+          </p>
         </div>
-      )}
-    </section>
+      </section>
+
       {/* Filter Buttons */}
      <section className="py-20 relative pt-20 pb-16 text-center"
       style={{ backgroundColor: "var(--background)" }}>
@@ -133,7 +125,7 @@ return (
 
           {/* Product Grid */}
           {filteredProducts.length === 0 ? (
-            <div className="py-20 relative pt-20 pb-16 text-center"
+            <div className="py-20 relative pt-10 pb-16 text-center"
       style={{ backgroundColor: "var(--background)" }}>
               <p className="text-muted-foreground text-lg">
                 Inga produkter hittades i denna kategori.

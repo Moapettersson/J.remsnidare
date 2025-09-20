@@ -6,7 +6,7 @@ import Footer from "@/components/ui/footer";
 import { Clock, Users, Calendar, X, ArrowRight } from "lucide-react";
 
 const Courses = () => {
-  const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSd35Iup_nlptG-ODKW089-l7iT_y16tMiLd_c4xodFR5PKhBA/viewform";
+  const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLScEDdcZEZYStheHgkfXsjTC34rCicZUm72U86VQjlFzEB7N0A/viewform?usp=header";
 
   const courses = [
     {
@@ -19,7 +19,7 @@ const Courses = () => {
       nextDate: "15-16 Mars 2024",
       description: "Lär dig grunderna i läderbearbetning. Vi går igenom materialkunskap, verktyg och skapar din första läderprodukt.",
       includes: ["Alla material", "Verktyg", "Lunch båda dagarna", "Kaffe & kaka"],
-      popular: true
+
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ const Courses = () => {
       nextDate: "22-26 April 2024",
       description: "Fördjupningskurs för dig som vill lära dig konsten att tillverka sadlar och sele. Kräver grundläggande kunskaper.",
       includes: ["Premium material", "Professionella verktyg", "Personlig handledning", "Lunch alla dagar"],
-      popular: false
+
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ const Courses = () => {
       nextDate: "8 Mars 2024",
       description: "Skapa din egen handgjorda läderväska. Välj mellan olika modeller och personalisera med dina egna detaljer.",
       includes: ["Läder och material", "Verktygsanvändning", "Lunch", "Recept på lädervård"],
-      popular: true
+
     },
   ];
 
@@ -77,16 +77,18 @@ const Courses = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8">
             {courses.map((course) => (
-              <Card key={course.id} className="p-6 cursor-pointer" onClick={() => setSelectedCourse(course)}>
-                <div className="flex justify-between items-start mb-4">
-                  <Badge className="mb-2">{course.level}</Badge>
-                  <div className="text-right">
-                    <div className="font-bold text-2xl">{formatPrice(course.price)}</div>
-                  </div>
-                </div>
-                <h3 className="font-playfair text-xl font-semibold mb-2">{course.title}</h3>
-                <p className="text-muted-foreground text-sm">{course.description}</p>
-              </Card>
+            <Card 
+              key={course.id} 
+              className="p-8 text-center hover:shadow-lg transition cursor-pointer"
+              onClick={() => setSelectedCourse(course)}
+            >
+              <div className="flex justify-center mb-4">
+                <Users className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-sans font-semibold mb-2">{course.title}</h3>
+              <p className="text-muted-foreground text-sm mb-4">{course.description}</p>
+              <div className="font-bold">{formatPrice(course.price)}</div>
+            </Card>
             ))}
           </div>
         </div>
@@ -113,7 +115,7 @@ const Courses = () => {
               <X className="h-6 w-6" />
             </button>
 
-            <h2 className="font-playfair text-2xl font-semibold mb-4 text-gray-900">{selectedCourse.title}</h2>
+            <h2 className="font-sans text-2xl font-semibold mb-4 text-gray-900">{selectedCourse.title}</h2>
             <p className="text-gray-600 mb-4">{selectedCourse.description}</p>
 
             <div className="mb-4">

@@ -10,22 +10,17 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
-      <div className="text-center max-w-lg">
-        {/* Stor rubrik */}
-        <h1 className="font-logo text-6xl md:text-8xl mb-6 text-logo-text">404</h1>
-
-        {/* Text */}
-        <p className="text-xl text-muted-foreground mb-2">
-          Sidan kunde inte hittas
-        </p>
-        <p className="text-muted-foreground mb-8">
-          Den sida du försökte nå verkar inte existera.
-        </p>
-
-        {/* Knapp */}
-        <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-          <Link to="/">Tillbaka till startsidan</Link>
+    <div className="flex min-h-screen items-center justify-center bg-gradient-warm"
+    style={{ backgroundColor: "var(--background)" }}>
+      
+      <div className="text-center">
+        <h1 className="mb-4 text-4xl font-bold font-playfair text-primary">404</h1>
+        <p className="mb-4 text-xl text-muted-foreground">Sidan kunde inte hittas</p>
+        <p className="mb-8 text-muted-foreground">Den sida du söker verkar inte existera.</p>
+        <Button asChild>
+          <Link to="/">
+            Tillbaka till startsidan
+          </Link>
         </Button>
       </div>
     </div>

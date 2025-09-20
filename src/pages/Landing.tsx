@@ -20,7 +20,7 @@ const Landing = () => {
             </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center var(--background)">
-            <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
+            <Button size="lg" asChild className="bg-primary hover:bg-secondary/90">
               <Link to="/showroom">
                 Inspiration <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
