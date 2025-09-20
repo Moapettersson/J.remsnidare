@@ -23,31 +23,30 @@ export default {
       fontFamily: {
         playfair: ["Playfair Display", "serif"],
         inter: ["Inter", "sans-serif"],
-        sans: ['Raleway', 'ui-sans-serif', 'system-ui'], // ersätter standard sans
+        sans: ['Montserrat', 'ui-sans-serif', 'system-ui'],
         logo: ["Rousseau Deco", "serif"],
-        montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui'], // ny font
+        montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui'],
         
       },
       colors: {
-        text: "hsl(var(--text))",
+        text: "#200f04",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        foreground: "#200f04",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          foreground: "#200f04",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        "logo-text": "#200f04",
       },
       backgroundImage: {
         "gradient-leather": "var(--gradient-leather)",

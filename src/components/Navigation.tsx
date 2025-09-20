@@ -23,7 +23,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="font-logo text-2xl text-logo-text tracking-wide">
+            <div className="font-logo text-2xl text-foreground tracking-wide">
               Sadelmakeriet
             </div>
           </Link>

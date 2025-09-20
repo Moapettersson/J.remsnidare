@@ -26,16 +26,15 @@
    CSS Variables (colors, shadows, etc.)
 ------------------------- */
 :root {
-  --text: #7b523e;
+  --text: #200f04;
   --background: #fffefa;
   --primary: #7c5442;
   --secondary: #e9e3d8;
   --accent: #876147;
-  --logo-text: #200f04;
 
-  --foreground: var(--text);
+  --foreground: #200f04;
   --primary-foreground: var(--background);
-  --secondary-foreground: var(--text);
+  --secondary-foreground: #200f04;
   --accent-foreground: var(--background);
 
   --border: 30 20% 88%;
