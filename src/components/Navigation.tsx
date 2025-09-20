@@ -11,8 +11,8 @@ const Navigation = () => {
 
   const navItems = [
     { path: "/", label: "Hem" },
-    { path: "/showroom", label: "Showroom" },
-    { path: "/shop", label: "Webbshop" },
+    { path: "/showroom", label: "Inspiration" },
+    { path: "/shop", label: "Produkter" },
     { path: "/kurser", label: "Kurser" },
     { path: "/om-oss", label: "Om Oss" },
   ];

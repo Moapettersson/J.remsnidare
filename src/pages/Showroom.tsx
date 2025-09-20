@@ -46,7 +46,7 @@ const Showroom = () => {
     >
       {/* Rubrik */}
       <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">
-        Showroom
+        Inspirations atelje
       </h1>
 
       {/* Text */}
@@ -55,21 +55,33 @@ const Showroom = () => {
       </p>
 
       {/* CEntrerad knapp */}
-      <div className="flex justify-center mt-6">
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSd35Iup_nlptG-ODKW089-l7iT_y16tMiLd_c4xodFR5PKhBA/viewform?usp=header"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button size="lg">
-            Boka konsultation <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </a>
-      </div>
+      {/* Två centrerade knappar */}
+          <div className="flex justify-center mt-6 gap-4">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSd35Iup_nlptG-ODKW089-l7iT_y16tMiLd_c4xodFR5PKhBA/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button size="lg">
+                Boka konsultation <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
+
+            <a
+              href="https://tarnsjogarveri.com/leather/our-selection-of-leather/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button size="lg">
+                Läder sortiment <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
+          </div>
+
     </section>
 
       {/* Alternating Grid */}
-      <section className="py-16 px-4 max-w-7xl mx-auto grid gap-12"
+      <section className="py-5 px-4 max-w-7xl mx-auto grid gap-12"
       style={{ backgroundColor: "var(--background)" }}>
         {projects.map((project, index) => (
           <div 

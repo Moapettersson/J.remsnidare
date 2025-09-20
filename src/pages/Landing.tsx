@@ -1,85 +1,48 @@
-import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { ArrowRight, Users, ShoppingBag, GraduationCap, Heart } from "lucide-react";
+import saddleImage from "@/assets/saddle-closeup.jpg";
+import Footer from "@/components/ui/footer";
 
-const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-
-  const isActive = (path: string) => location.pathname === path;
-
-  const navItems = [
-    { path: "/", label: "Hem" },
-    { path: "/showroom", label: "Showroom" },
-    { path: "/shop", label: "Webbshop" },
-    { path: "/Courses", label: "Kurser" },
-    { path: "/om-oss", label: "Om Oss" },
-  ];
-
+const Landing = () => {
   return (
-    <nav className="bg-background border-b border-border sticky top-0 z-50" style={{ backgroundColor: "var(--background)" }}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="font-logo text-2xl text-foreground tracking-wide">
-              Sadelmakeriet
-            </div>
-          </Link>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+        <section className=" relative h-screen flex items-center justify-center bg-background py-20 relative pt-20 pb-16 text-center" style={{ backgroundColor: "var(--background)" }}>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`font-medium transition-colors hover:text-primary ${
-                  isActive(item.path)
-                    ? "text-primary border-b-2 border-primary"
-                    : "text-foreground"
-                }`}
-              >
-                {item.label}
+          <div className="relative z-10 text-center px-4 max-w-4xl ">
+           <h1 className="font-logo text-7xl md:text-8xl mb-6 leading-tight text-logo-text">
+            Sadelmakeriet
+          </h1>
+            <p className="text-xl font-montserrat md:text-2xl mb-8 text-[hsl(var(--text))] max-w-2xl mx-auto leading-relaxed">
+              Tradition och förnyelse. 
+            </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center var(--background)">
+            <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
+              <Link to="/showroom">
+                Inspiration <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
-            ))}
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </Button>
+              <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
+              <Link to="/Shop">
+                Produkter <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+             <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
+              <Link to="/Kurser">
+                Kurser <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
           </div>
+    
         </div>
+      </section>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`font-medium text-base transition-colors hover:text-primary ${
-                    isActive(item.path) ? "text-primary" : "text-foreground"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
+        <Footer/>
+    </div>
   );
 };
 
-export default Navigation;
+export default Landing;

@@ -87,23 +87,35 @@ const Shop = () => {
     );
   }
 
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 relative pt-20 pb-10 text-center"
-      style={{ backgroundColor: "var(--background)" }}>
-        <div className="max-w-3xl mx-auto">
-          <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text hover:text-logo-text/80 transition-colors duration-300">
-            Produkter
-          </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed hover:text-foreground transition-colors duration-300">
-            Upptäck vårt utbud av handgjorda läderprodukter – varje artikel är unik och skapad med traditionella tekniker och modern design.
-          </p>
-        </div>
-      </section>
+return (
+  <div className="min-h-screen relative">
+    {/* Hero Section */}
+    <section
+      className="py-20 relative pt-20 pb-16 text-center"
+      style={{
+        backgroundImage: "url('/din-bakgrundsbild.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="max-w-3xl mx-auto">
+        <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">
+          Produkter
+        </h1>
+        <p className="text-xl text-muted-foreground leading-relaxed">
+          Upptäck vårt utbud av handgjorda läderprodukter.
+        </p>
+      </div>
 
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+          <Loader2 className="h-10 w-10 animate-spin text-white" />
+          <span className="ml-2 text-white">Laddar produkter...</span>
+        </div>
+      )}
+    </section>
       {/* Filter Buttons */}
-     <section className="py-20 relative pt-5 pb-16 text-center"
+     <section className="py-20 relative pt-20 pb-16 text-center"
       style={{ backgroundColor: "var(--background)" }}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -121,7 +133,8 @@ const Shop = () => {
 
           {/* Product Grid */}
           {filteredProducts.length === 0 ? (
-            <div className="text-center py-20">
+            <div className="py-20 relative pt-20 pb-16 text-center"
+      style={{ backgroundColor: "var(--background)" }}>
               <p className="text-muted-foreground text-lg">
                 Inga produkter hittades i denna kategori.
               </p>
