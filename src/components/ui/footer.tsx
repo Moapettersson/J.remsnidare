@@ -3,7 +3,8 @@ import { Mail, Phone, Instagram, Facebook } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-background text-foreground w-full py-12">
+    <footer className="py-20 relative pt-20 pb-16 text-center"
+      style={{ backgroundColor: "var(--background)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
 

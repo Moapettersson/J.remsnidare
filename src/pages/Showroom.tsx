@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+
 import Footer from "@/components/ui/footer";
 import { ArrowRight } from "lucide-react";
 
@@ -25,7 +26,7 @@ const projects = [
     image: furnitureImage3, 
     title: "Projekt 3", 
     category: "Möbler & Läder", 
-    text: <p>"Vi hjälper arkitekter och designers att skapa exklusiva miljöer med läder och skräddarsydda möbler."</p>
+    text: <p>"Tidlöst fokus"</p>
   },
   { 
     image: furnitureImage4, 
@@ -39,16 +40,37 @@ const Showroom = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 relative pt-20 pb-16 text-center" style={{ backgroundColor: "var(--background)" }}>
-   
-        <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">Showroom</h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Utforska våra projekt och hur vi förvandlar rum med läder och möbler.
-        </p>
-      </section>
+    <section
+      className="py-20 relative pt-20 pb-16 text-center"
+      style={{ backgroundColor: "var(--background)" }}
+    >
+      {/* Rubrik */}
+      <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">
+        Showroom
+      </h1>
+
+      {/* Text */}
+      <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        Utforska våra projekt och hur vi förvandlar rum med läder och möbler.
+      </p>
+
+      {/* CEntrerad knapp */}
+      <div className="flex justify-center mt-6">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd35Iup_nlptG-ODKW089-l7iT_y16tMiLd_c4xodFR5PKhBA/viewform?usp=header"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button size="lg">
+            Boka konsultation <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+        </a>
+      </div>
+    </section>
 
       {/* Alternating Grid */}
-      <section className="py-16 px-4 max-w-7xl mx-auto grid gap-12">
+      <section className="py-16 px-4 max-w-7xl mx-auto grid gap-12"
+      style={{ backgroundColor: "var(--background)" }}>
         {projects.map((project, index) => (
           <div 
             key={index} 

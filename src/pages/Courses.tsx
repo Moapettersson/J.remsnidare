@@ -1,11 +1,13 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import  Footer  from "@/components/ui/footer";
-import { Calendar, Clock, Users, Star, ArrowRight } from "lucide-react";
-import courseImage from "@/assets/leather-course.jpg";
+import Footer from "@/components/ui/footer";
+import { Clock, Users, Calendar, X, ArrowRight } from "lucide-react";
 
 const Courses = () => {
+  const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSd35Iup_nlptG-ODKW089-l7iT_y16tMiLd_c4xodFR5PKhBA/viewform";
+
   const courses = [
     {
       id: 1,
@@ -23,7 +25,7 @@ const Courses = () => {
       id: 2,
       title: "Sadelmakeri - Intensivkurs",
       level: "Avancerad",
-      duration: "5 dagar", 
+      duration: "5 dagar",
       participants: "Max 4 deltagare",
       price: 8900,
       nextDate: "22-26 April 2024",
@@ -43,193 +45,115 @@ const Courses = () => {
       includes: ["Läder och material", "Verktygsanvändning", "Lunch", "Recept på lädervård"],
       popular: true
     },
-    {
-      id: 4,
-      title: "Privat Handledning",
-      level: "Alla nivåer",
-      duration: "Flexibel",
-      participants: "1-2 deltagare", 
-      price: 890,
-      nextDate: "Efter överenskommelse",
-      description: "Skräddarsydd undervisning för ditt specifika projekt. Perfekt för dig som vill fokusera på något särskilt.",
-      includes: ["Personlig handledning", "Projektspecifika råd", "Flexibel tidsram"],
-      popular: false
-    }
   ];
 
-  const testimonials = [
-    {
-      name: "Anna Lindberg",
-      course: "Grundkurs i Läderhantverk",
-      rating: 5,
-      comment: "Fantastisk kurs! Lärde mig så mycket på bara två dagar. Instruktören var tålmodig och kunnig."
-    },
-    {
-      name: "Erik Ström",
-      course: "Sadelmakeri - Intensivkurs", 
-      rating: 5,
-      comment: "Otroligt detaljerad kurs som gav mig verktyg att starta mitt eget sadelmakeri. Rekommenderar varmt!"
-    },
-    {
-      name: "Maria Johansson",
-      course: "Läderväska Workshop",
-      rating: 5,
-      comment: "Så roligt att skapa något med sina egna händer. Min väska blev precis som jag ville ha den!"
-    }
-  ];
+  const [selectedCourse, setSelectedCourse] = useState(null as typeof courses[0] | null);
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('sv-SE', {
-      style: 'currency', 
+  const formatPrice = (price: number) =>
+    new Intl.NumberFormat('sv-SE', {
+      style: 'currency',
       currency: 'SEK',
       minimumFractionDigits: 0
     }).format(price);
-  };
 
   return (
-    <div className="min-h-screen">
+   <div className="min-h-screen">
       {/* Hero Section */}
-           <section className="py-20" style={{ backgroundColor: "var(--background)" }}>
-      
-        <div className="absolute inset-0 bg-gradient-hero"></div>
-        <div className="relative z-10 container mx-auto px-4">
-          <div className="max-w-3xl var(--text)">
-            <Badge className="mb-4 bg-white/20 text-white border-white">Lär dig hantverket</Badge>
-            <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">
-              Kurser i
-              <br />
-              <span className="text-secondary">Läderhantverk</span>
-            </h1>
-            <p className="text-xl leading-relaxed  var(--text)">
-              Upptäck konsten att arbeta med läder. Våra kurser passar alla nivåer - 
-              från nybörjare till de som vill fördjupa sina kunskaper inom traditionellt hantverk.
-            </p>
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              Se alla kurser <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
+      <section className="py-20 relative pt-20 pb-10 text-center"
+      style={{ backgroundColor: "var(--background)" }}>
+        <div className="max-w-3xl mx-auto">
+          <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">
+            Kurser
+          </h1>
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            Upptäck vårt utbud av handgjorda läderprodukter – varje artikel är unik och skapad med traditionella tekniker och modern design.
+          </p>
         </div>
       </section>
 
       {/* Course Grid */}
-      <section className="py-20" style={{ backgroundColor: "var(--background)" }}>
+      <section className="py-20 relative pt-20 pb-16 text-center"
+      style={{ backgroundColor: "var(--background)" }}>
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl font-bold text-primary mb-4">
-              Våra Kurser
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Välj den kurs som passar din nivå och dina intressen
-            </p>
-          </div>
-
           <div className="grid lg:grid-cols-2 gap-8">
             {courses.map((course) => (
-              <Card key={course.id} className="leather-card overflow-hidden">
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <Badge 
-                        variant={course.level === "Nybörjare" ? "default" : course.level === "Medel" ? "secondary" : "outline"}
-                        className="mb-2"
-                      >
-                        {course.level}
-                      </Badge>
-                      {course.popular && (
-                        <Badge className="mb-2 ml-2 bg-primary/10 text-primary">
-                          Populär
-                        </Badge>
-                      )}
-                    </div>
-                    <div className="text-right">
-                      <div className="font-bold text-2xl">{formatPrice(course.price)}</div>
-                      <div className="text-sm text-muted-foreground">per person</div>
-                    </div>
+              <Card key={course.id} className="p-6 cursor-pointer" onClick={() => setSelectedCourse(course)}>
+                <div className="flex justify-between items-start mb-4">
+                  <Badge className="mb-2">{course.level}</Badge>
+                  <div className="text-right">
+                    <div className="font-bold text-2xl">{formatPrice(course.price)}</div>
                   </div>
-
-                  <h3 className="font-playfair text-xl font-semibold mb-3">
-                    {course.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {course.description}
-                  </p>
-
-                  <div className="grid grid-cols-3 gap-4 mb-4 text-sm">
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 text-primary mr-2" />
-                      {course.duration}
-                    </div>
-                    <div className="flex items-center">
-                      <Users className="h-4 w-4 text-primary mr-2" />
-                      {course.participants}
-                    </div>
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 text-primary mr-2" />
-                      {course.nextDate}
-                    </div>
-                  </div>
-
-                  <div className="mb-6">
-                    <h4 className="font-medium mb-2">Ingår i kursen:</h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {course.includes.map((item, index) => (
-                        <li key={index} className="flex items-center">
-                          <Star className="h-3 w-3 text-primary mr-2 fill-current" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <Button className="w-full">
-                    Boka plats
-                  </Button>
                 </div>
+                <h3 className="font-playfair text-xl font-semibold mb-2">{course.title}</h3>
+                <p className="text-muted-foreground text-sm">{course.description}</p>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 bg-gradient-warm">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl font-bold text-primary mb-4">
-              Vad säger våra deltagare?
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Läs om andras upplevelser av våra kurser
-            </p>
-          </div>
+      {/* Modal */}
+      {selectedCourse && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Suddig bakgrund */}
+          <div
+            className="absolute inset-0 bg-white/50 backdrop-blur-sm"
+            onClick={() => setSelectedCourse(null)}
+          ></div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="leather-card p-6">
-                <div className="flex items-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star 
-                      key={i} 
-                      className={`h-4 w-4 ${i < testimonial.rating ? 'text-primary fill-current' : 'text-muted'}`} 
-                    />
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-4 italic leading-relaxed">
-                  "{testimonial.comment}"
-                </p>
-                <div>
-                  <div className="font-medium">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.course}</div>
-                </div>
-              </Card>
-            ))}
+          {/* Solid modalpanel */}
+          <div
+            className="relative bg-white border border-white-200 rounded-xl max-w-xl w-full mx-4 p-6 shadow-2xl z-10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-3 right-3 text-muted-foreground hover:text-primary"
+              onClick={() => setSelectedCourse(null)}
+            >
+              <X className="h-6 w-6" />
+            </button>
+
+            <h2 className="font-playfair text-2xl font-semibold mb-4 text-gray-900">{selectedCourse.title}</h2>
+            <p className="text-gray-600 mb-4">{selectedCourse.description}</p>
+
+            <div className="mb-4">
+              <h3 className="font-medium mb-2 text-gray-900">Ingår i kursen:</h3>
+              <ul className="text-sm text-gray-600 list-disc list-inside space-y-1">
+                {selectedCourse.includes.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 mb-6 text-sm">
+              <div className="flex items-center text-gray-700">
+                <Clock className="h-4 w-4 text-primary mr-2"/>
+                {selectedCourse.duration}
+              </div>
+              <div className="flex items-center text-gray-700">
+                <Users className="h-4 w-4 text-primary mr-2"/>
+                {selectedCourse.participants}
+              </div>
+              <div className="flex items-center text-gray-700">
+                <Calendar className="h-4 w-4 text-primary mr-2"/>
+                {selectedCourse.nextDate}
+              </div>
+            </div>
+
+            <div className="text-right mb-4">
+              <span className="text-3xl font-bold text-primary">{formatPrice(selectedCourse.price)}</span>
+            </div>
+
+            <a href={googleFormLink} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="w-full">
+                Anmäl dig <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
           </div>
         </div>
-      </section>
+      )}
 
-    <Footer/>
-      
+      <Footer />
     </div>
   );
 };
