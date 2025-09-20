@@ -95,7 +95,7 @@ const Courses = () => {
         <div className="relative z-10 container mx-auto px-4">
           <div className="max-w-3xl var(--text)">
             <Badge className="mb-4 bg-white/20 text-white border-white">Lär dig hantverket</Badge>
-            <h1 className="font-playfair text-5xl md:text-6xl font-bold mb-6 var(--text)">
+            <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">
               Kurser i
               <br />
               <span className="text-secondary">Läderhantverk</span>

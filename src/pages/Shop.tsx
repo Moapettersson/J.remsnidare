@@ -113,7 +113,7 @@ const Shop = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <Badge className="mb-4 bg-primary/10 text-primary">Handgjort med kärlek</Badge>
-            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-primary mb-6">
+            <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">
               Våra Läderprodukter
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">

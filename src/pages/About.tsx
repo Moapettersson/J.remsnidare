@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/ui/footer";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Award, Users, Clock, Mail, Phone, MapPin } from "lucide-react";
 import heroImage from "@/assets/hero-leather-workshop.jpg";
@@ -59,7 +60,7 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-hero"></div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <Badge className="mb-4 bg-white/20 var(--text) border-white">Vår berättelse</Badge>
-          <h1 className="font-playfair text-5xl md:text-6xl font-bold var(--text) mb-6">
+          <h1 className="font-logo text-5xl md:text-8xl mb-6 leading-tight text-logo-text">
             Läderhantverket
             <br />
 
@@ -183,75 +184,7 @@ const About = () => {
         </div>
       </section> */}
 
-      {/* Timeline */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl font-bold text-primary mb-4">
-              Vår resa genom åren
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Från humble början till etablerad mästare
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            {milestones.map((milestone, index) => (
-              <div key={index} className="relative flex items-center mb-8 last:mb-0">
-                {/* Timeline line */}
-                {index !== milestones.length - 1 && (
-                  <div className="absolute left-4 top-8 w-0.5 h-16 bg-border"></div>
-                )}
-                
-                {/* Year badge */}
-                <div className="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-bold mr-6">
-                  {index + 1}
-                </div>
-                
-                {/* Content */}
-                <Card className="leather-card flex-1 p-6">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                    <div className="flex-1">
-                      <Badge className="mb-2 bg-primary/10 text-primary">
-                        {milestone.year}
-                      </Badge>
-                      <h3 className="font-playfair text-xl font-semibold mb-2">
-                        {milestone.title}
-                      </h3>
-                      <p className="text-muted-foreground">
-                        {milestone.description}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-warm">
-        <div className="container mx-auto px-4 text-center">
-          <Card className="leather-card p-12 max-w-3xl mx-auto">
-            <h3 className="font-playfair text-3xl font-bold mb-4">
-              Bli en del av vår berättelse
-            </h3>
-            <p className="text-lg text-muted-foreground mb-8">
-              Oavsett om du söker professionella tjänster, vill lära dig hantverket 
-              eller bara är nyfiken på vår process - vi välkomnar dig att kontakta oss.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                Besök vår verkstad
-              </Button>
-              <Button size="lg" variant="outline">
-                Boka konsultation
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </section>
+    <Footer/>
     </div>
   );
 };

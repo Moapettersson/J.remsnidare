@@ -41,7 +41,7 @@ const Showroom = () => {
       {/* Hero Section */}
       <section className="py-20 relative pt-20 pb-16 text-center" style={{ backgroundColor: "var(--background)" }}>
    
-        <h1 className="font-playfair text-6xl md:text-7xl font-bold mb-4">Showroom</h1>
+        <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">Showroom</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Utforska våra projekt och hur vi förvandlar rum med läder och möbler.
         </p>
