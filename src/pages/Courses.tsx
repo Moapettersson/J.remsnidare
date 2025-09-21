@@ -84,13 +84,13 @@ const Courses = () => {
             Kurser
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
-            Lär dig traditionellt läderhantverk från erfarna hantverkare. Vi erbjuder kurser för alla nivåer.
+            Lär dig att arbeta med läder från grunden eller fördjupa dina kunskaper, testa på processen att gå från ide till färdig produkt med handledning från mig.
           </p>
         </div>
       </section>
 
       {/* Course Grid */}
-      <section className="py-20 relative pt-20 pb-16 text-center"
+      <section className="py-20 relative pt-20  text-center"
       style={{ backgroundColor: "var(--background)" }}>
         <div className="container mx-auto px-4">
           {courses.length === 0 ? (
@@ -104,7 +104,7 @@ const Courses = () => {
               {courses.map((course) => (
                 <Card 
                   key={course._id} 
-                  className="p-8 text-center hover:shadow-lg transition cursor-pointer transform hover:scale-105 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 hover:border-primary/20"
+                  className="p-8 text-center hover:shadow-lg transition cursor-pointer transform hover:scale-105 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 hover:border-primary/1"
                   onClick={() => setSelectedCourse(course)}
                 >
                   {course.featured && (

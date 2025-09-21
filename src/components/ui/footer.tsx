@@ -55,21 +55,14 @@ export default function Footer() {
                 <Phone className="w-5 h-5" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/j_remsnidare/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-primary transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
+        
             </div>
           </div>
 

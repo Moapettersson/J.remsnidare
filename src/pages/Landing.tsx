@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { ArrowRight, Users, ShoppingBag, GraduationCap, Heart } from "lucide-react";
-import saddleImage from "@/assets/close-up-brown-leather-texture.jpg";
+import saddleImage from "@/assets/intriguing-dark-brown-leather-seamless-texture-long-exposure-background-design-inspiration-immerse-yourself-rich-351761785.webp"
 import Footer from "@/components/ui/footer";
 import leatherImage1 from "@/assets/sadelmakaren/working.jpg"; 
 import leatherImage2 from "@/assets/showroom/table.png";
@@ -46,22 +46,22 @@ const Landing = () => {
           <h1 className="font-logo text-7xl md:text-8xl mb-6 leading-tight text-white drop-shadow-lg">
             Sadelmakeriet
           </h1>
-          <p className="text-xl font-montserrat md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+          <p className="text-xl font-montserrat md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-md ">
             Tradition och förnyelse. 
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild className=" text-white shadow-lg">
+            <Button size="lg" asChild className=" text-lg text-white shadow-lg">
               <Link to="/showroom">
                 Inspiration <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" asChild className=" text-white shadow-lg">
+            <Button size="lg" asChild className="text-lg text-white shadow-lg">
               <Link to="/Shop">
                 Produkter <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" asChild className=" text-white shadow-lg">
+            <Button size="lg" asChild className=" text-lg text-white shadow-lg">
               <Link to="/Kurser">
                 Kurser <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

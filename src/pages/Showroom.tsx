@@ -46,12 +46,12 @@ const Showroom = () => {
     >
       {/* Rubrik */}
       <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">
-        Inspirations atelje
+        Inspirations ateljén
       </h1>
 
       {/* Text */}
       <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-       Läder i inredning, till hem och arbetsplats. Bara fantasin sätter gränser. Hör av dig för att boka en konsultation så förvandlar vi din ide till verklighet.
+       Läder i inredning, till hem och arbetsplats. Bara fantasin sätter gränserna. Hör av dig för att boka en konsultation så förvandlar vi din idé till verklighet.
       </p>
 
       {/* CEntrerad knapp */}

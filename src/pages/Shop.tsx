@@ -110,16 +110,22 @@ useEffect(() => {
      <section className="py-20 relative pt-10 pb-16 text-center"
       style={{ backgroundColor: "var(--background)" }}>
         <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-10 mb-12">
             {groups.map((group) => (
-              <Button
-                key={group.id}
-                variant={selectedGroup === group.id ? "default" : "outline"}
-                onClick={() => setSelectedGroup(group.id)}
-                className="transform hover:scale-105 transition-all duration-300 hover:shadow-md"
-              >
-                {group.label}
-              </Button>
+                 <button
+      key={group.id}
+      onClick={() => setSelectedGroup(group.id)}
+      className={`
+        font-medium transition-colors duration-300
+        hover:text-primary cursor-pointer
+        ${selectedGroup === group.id 
+          ? "text-primary border-b-2 border-primary" 
+          : "text-logo-text border-b-2 border-transparent"
+        }
+      `}
+    >
+      {group.label}
+    </button>
             ))}
           </div>
 
@@ -134,11 +140,14 @@ useEffect(() => {
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProducts.map((product) => (
-                <Card 
-                  key={product._id} 
-                  className="overflow-hidden group text-center cursor-pointer transform hover:scale-105 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 hover:border-primary/20"
-                  onClick={() => setSelectedProduct(product)}
-                >
+               
+                  <Card 
+                    key={product._id} 
+                    className="overflow-hidden group text-center cursor-pointer transform hover:scale-105 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                    onClick={() => setSelectedProduct(product)}
+>
+
+                
                   {/* Product Image */}
                   <div className="relative h-64 bg-muted flex items-center justify-center overflow-hidden">
                     {product.image ? (
@@ -157,7 +166,7 @@ useEffect(() => {
 
                   {/* Product Info */}
                   <div className="p-6">
-                    <h3 className="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
+                    <h3 className="font-sans text-lg font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
                       {product.name}
                     </h3>
                     <p className="text-muted-foreground text-sm mb-4 group-hover:text-foreground transition-colors duration-300">
