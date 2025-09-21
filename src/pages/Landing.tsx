@@ -43,27 +43,27 @@ const Landing = () => {
         <div className="absolute inset-0 bg-black/30"></div>
 
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <h1 className="font-logo text-7xl md:text-8xl mb-6 leading-tight text-white drop-shadow-lg">
+          <h1 className="font-logo text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-4 sm:mb-6 leading-tight text-white drop-shadow-lg">
             Sadelmakeriet
           </h1>
-          <p className="text-xl font-montserrat md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-md ">
+          <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-md px-4">
             Tradition och förnyelse. 
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild className=" text-lg text-white shadow-lg">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+            <Button size="lg" asChild className="text-base sm:text-lg text-white shadow-lg w-full sm:w-auto">
               <Link to="/showroom">
-                Inspiration <ArrowRight className="ml-2 h-5 w-5" />
+                Inspiration <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
             </Button>
-            <Button size="lg" asChild className="text-lg text-white shadow-lg">
+            <Button size="lg" asChild className="text-base sm:text-lg text-white shadow-lg w-full sm:w-auto">
               <Link to="/Shop">
-                Produkter <ArrowRight className="ml-2 h-5 w-5" />
+                Produkter <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
             </Button>
-            <Button size="lg" asChild className=" text-lg text-white shadow-lg">
+            <Button size="lg" asChild className="text-base sm:text-lg text-white shadow-lg w-full sm:w-auto">
               <Link to="/Kurser">
-                Kurser <ArrowRight className="ml-2 h-5 w-5" />
+                Kurser <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
             </Button>
           </div>
@@ -83,11 +83,11 @@ const Landing = () => {
         <div className="py-20 relative pt-20 pb-16 text-center"
              style={{ backgroundColor: "var(--background)" }}>
           {/* Rubrik */}
-          <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text">
+          <h1 className="font-logo text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-4 sm:mb-6 leading-tight text-logo-text px-4">
             Att arbeta med läder
           </h1>
           {/* Text */}
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Det vackra med läder och dess historia
           </p>
         </div>
