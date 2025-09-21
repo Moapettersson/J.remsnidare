@@ -69,6 +69,26 @@ const course = {
       type: 'array',
       of: [{type: 'string'}],
       validation: (Rule: any) => Rule.required().min(1)
+    },
+    {
+      name: 'image',
+      title: 'Bild',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'featured',
+      title: 'Utvald kurs',
+      type: 'boolean',
+      initialValue: false
+    },
+    {
+      name: 'active',
+      title: 'Aktiv',
+      type: 'boolean',
+      initialValue: true
     }
   ],
   

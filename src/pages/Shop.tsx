@@ -169,12 +169,11 @@ useEffect(() => {
                       </p>
                     )}
                     <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="group/btn transform hover:scale-105 transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                      size="lg" 
+                      className="group/btn transform hover:scale-105 transition-all duration-300"
                     >
                       Se mer information
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                      <ArrowRight className="ml-2 h-5 w-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
                     </Button>
                   </div>
                 </Card>
@@ -276,15 +275,13 @@ useEffect(() => {
                 <p className="text-sm text-gray-600 mb-4 text-center">
                   Intresserad av denna produkt? Kontakta oss för mer information och leveranstid.
                 </p>
-                <a href={googleFormLink} target="_blank" rel="noopener noreferrer">
-                  <Button 
-                    size="lg" 
-                    className="w-full group transform hover:scale-105 transition-all duration-300 hover:shadow-lg"
-                  >
-                    Beställ nu 
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </a>
+                <div className="flex justify-center gap-4">
+                  <a href={googleFormLink} target="_blank" rel="noopener noreferrer">
+                    <Button size="lg">
+                      Beställ nu <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

@@ -14,7 +14,7 @@ const Courses = () => {
   const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLScEDdcZEZYStheHgkfXsjTC34rCicZUm72U86VQjlFzEB7N0A/viewform?usp=header";
 
   // Query för att hämta kurser från Sanity
-  const coursesQuery = `*[_type == "course" && active == true] {
+  const coursesQuery = `*[_type == "course" && (!defined(active) || active == true)] {
     _id,
     title,
     slug,
@@ -35,7 +35,9 @@ const Courses = () => {
     const fetchCourses = async () => {
       try {
         setLoading(true);
+        console.log('Fetching courses with query:', coursesQuery);
         const coursesData = await client.fetch(coursesQuery);
+        console.log('Fetched courses data:', coursesData);
         setCourses(coursesData);
       } catch (error) {
         console.error('Error fetching courses:', error);
