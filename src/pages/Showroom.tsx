@@ -94,7 +94,7 @@ const Showroom = () => {
             <div className={`flex flex-col justify-center ${index % 2 === 1 ? "md:order-last" : ""}`}>
 
   
-              <p className="text-lg text-muted-foreground italic leading-relaxed mb-6">{project.text}</p>
+              <p className="text-2xl text-center text-muted-foreground italic leading-relaxed mb-">{project.text}</p>
 
             </div>
 

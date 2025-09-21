@@ -15,7 +15,7 @@ const storySections = [
     text: "Efter flera år som lärling och gesäll öppnade jag mitt första eget sadelmakeri 1985. Målet var att kombinera traditionella tekniker med modern design och funktionalitet. Idag delar vi även vår kunskap genom kurser och workshops."
   },
   {
-    title: "Lädrets historia",
+    title: "Tidlöst och Hållbart",
     image: leatherImage2,
     text: "Efter flera år som lärling och gesäll öppnade jag mitt första eget sadelmakeri 1985. Målet var att kombinera traditionella tekniker med modern design och funktionalitet. Idag delar vi även vår kunskap genom kurser och workshops."
   }

@@ -41,3 +41,18 @@ export interface SanityCategory {
   slug: { current: string }
   description?: string
 }
+export interface SanityCourse {
+  _id: string
+  title: string
+  slug: { current: string }
+  level: string
+  duration: string
+  participants: string
+  price: number
+  nextDate: string
+  description: string
+  includes: string[]
+  image?: any
+  featured?: boolean
+  active?: boolean
+}

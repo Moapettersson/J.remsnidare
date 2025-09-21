@@ -94,7 +94,7 @@ useEffect(() => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 relative pt-20 pb-10 text-center"
+      <section className="py-10 relative pt-20 text-center"
       style={{ backgroundColor: "var(--background)" }}>
         <div className="max-w-3xl mx-auto">
           <h1 className="font-logo text-5xl md:text-7xl mb-6 leading-tight text-logo-text hover:text-logo-text/80 transition-colors duration-300">
@@ -107,7 +107,7 @@ useEffect(() => {
       </section>
 
       {/* Filter Buttons */}
-     <section className="py-20 relative pt-20 pb-16 text-center"
+     <section className="py-20 relative pt-10 pb-16 text-center"
       style={{ backgroundColor: "var(--background)" }}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4 mb-12">

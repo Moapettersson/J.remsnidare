@@ -1,53 +1,51 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Footer from "@/components/ui/footer";
-import { Clock, Users, Calendar, X, ArrowRight } from "lucide-react";
+import { Clock, Users, Calendar, X, ArrowRight, Loader2 } from "lucide-react";
+import { client, urlFor, SanityCourse } from "@/lib/sanity";
 
 const Courses = () => {
+  const [courses, setCourses] = useState<SanityCourse[]>([]);
+  const [selectedCourse, setSelectedCourse] = useState<SanityCourse | null>(null);
+  const [loading, setLoading] = useState(true);
+
   const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLScEDdcZEZYStheHgkfXsjTC34rCicZUm72U86VQjlFzEB7N0A/viewform?usp=header";
 
-  const courses = [
-    {
-      id: 1,
-      title: "Grundkurs i Läderhantverk",
-      level: "Nybörjare",
-      duration: "2 dagar",
-      participants: "Max 6 deltagare",
-      price: 2890,
-      nextDate: "15-16 Mars 2024",
-      description: "Lär dig grunderna i läderbearbetning. Vi går igenom materialkunskap, verktyg och skapar din första läderprodukt.",
-      includes: ["Alla material", "Verktyg", "Lunch båda dagarna", "Kaffe & kaka"],
+  // Query för att hämta kurser från Sanity
+  const coursesQuery = `*[_type == "course" && active == true] {
+    _id,
+    title,
+    slug,
+    level,
+    duration,
+    participants,
+    price,
+    nextDate,
+    description,
+    includes,
+    image,
+    featured,
+    active
+  } | order(featured desc, _createdAt desc)`;
 
-    },
-    {
-      id: 2,
-      title: "Sadelmakeri - Intensivkurs",
-      level: "Avancerad",
-      duration: "5 dagar",
-      participants: "Max 4 deltagare",
-      price: 8900,
-      nextDate: "22-26 April 2024",
-      description: "Fördjupningskurs för dig som vill lära dig konsten att tillverka sadlar och sele. Kräver grundläggande kunskaper.",
-      includes: ["Premium material", "Professionella verktyg", "Personlig handledning", "Lunch alla dagar"],
+  // Hämta kurser från Sanity
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        setLoading(true);
+        const coursesData = await client.fetch(coursesQuery);
+        setCourses(coursesData);
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    },
-    {
-      id: 3,
-      title: "Läderväska Workshop",
-      level: "Medel",
-      duration: "1 dag",
-      participants: "Max 8 deltagare",
-      price: 1490,
-      nextDate: "8 Mars 2024",
-      description: "Skapa din egen handgjorda läderväska. Välj mellan olika modeller och personalisera med dina egna detaljer.",
-      includes: ["Läder och material", "Verktygsanvändning", "Lunch", "Recept på lädervård"],
-
-    },
-  ];
-
-  const [selectedCourse, setSelectedCourse] = useState(null as typeof courses[0] | null);
+    fetchCourses();
+  }, []);
 
   const formatPrice = (price: number) =>
     new Intl.NumberFormat('sv-SE', {
@@ -55,6 +53,24 @@ const Courses = () => {
       currency: 'SEK',
       minimumFractionDigits: 0
     }).format(price);
+
+  const getLevelLabel = (level: string) => {
+    const labels = {
+      'beginner': 'Nybörjare',
+      'intermediate': 'Medel',
+      'advanced': 'Avancerad'
+    };
+    return labels[level as keyof typeof labels] || level;
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin" />
+        <span className="ml-2">Laddar kurser...</span>
+      </div>
+    );
+  }
 
   return (
    <div className="min-h-screen">
@@ -66,7 +82,7 @@ const Courses = () => {
             Kurser
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
-            Upptäck vårt utbud av handgjorda läderprodukter – varje artikel är unik och skapad med traditionella tekniker och modern design.
+            Lär dig traditionellt läderhantverk från erfarna hantverkare. Vi erbjuder kurser för alla nivåer.
           </p>
         </div>
       </section>
@@ -75,35 +91,59 @@ const Courses = () => {
       <section className="py-20 relative pt-20 pb-16 text-center"
       style={{ backgroundColor: "var(--background)" }}>
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {courses.map((course) => (
-            <Card 
-              key={course.id} 
-              className="p-8 text-center hover:shadow-lg transition cursor-pointer"
-              onClick={() => setSelectedCourse(course)}
-            >
-              <div className="flex justify-center mb-4">
-                <Users className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-sans font-semibold mb-2">{course.title}</h3>
-              <p className="text-muted-foreground text-sm mb-4">{course.description}</p>
-              <div className="font-bold">{formatPrice(course.price)}</div>
-            </Card>
-            ))}
-          </div>
+          {courses.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-muted-foreground text-lg">
+                Inga kurser tillgängliga just nu.
+              </p>
+            </div>
+          ) : (
+            <div className="grid lg:grid-cols-2 gap-8">
+              {courses.map((course) => (
+                <Card 
+                  key={course._id} 
+                  className="p-8 text-center hover:shadow-lg transition cursor-pointer transform hover:scale-105 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 hover:border-primary/20"
+                  onClick={() => setSelectedCourse(course)}
+                >
+                  {course.featured && (
+                    <Badge className="mb-4" variant="default">Populär</Badge>
+                  )}
+                  
+                  {course.image && (
+                    <div className="w-16 h-16 mx-auto mb-4 overflow-hidden rounded-full">
+                      <img 
+                        src={urlFor(course.image).width(64).height(64).fit('crop').url()} 
+                        alt={course.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  
+                  {!course.image && (
+                    <div className="flex justify-center mb-4">
+                      <Users className="h-8 w-8 text-primary" />
+                    </div>
+                  )}
+                  
+                  <Badge className="mb-2" variant="outline">{getLevelLabel(course.level)}</Badge>
+                  <h3 className="text-xl font-sans font-semibold mb-2">{course.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">{course.description}</p>
+                  <div className="font-bold">{formatPrice(course.price)}</div>
+                </Card>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       {/* Modal */}
       {selectedCourse && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
-          {/* Suddig bakgrund */}
           <div
             className="absolute inset-0 bg-white/50 backdrop-blur-sm"
             onClick={() => setSelectedCourse(null)}
           ></div>
 
-          {/* Solid modalpanel */}
           <div
             className="relative bg-white border border-white-200 rounded-xl max-w-xl w-full mx-4 p-6 shadow-2xl z-10"
             onClick={(e) => e.stopPropagation()}
@@ -115,6 +155,7 @@ const Courses = () => {
               <X className="h-6 w-6" />
             </button>
 
+            <Badge className="mb-4" variant="outline">{getLevelLabel(selectedCourse.level)}</Badge>
             <h2 className="font-sans text-2xl font-semibold mb-4 text-gray-900">{selectedCourse.title}</h2>
             <p className="text-gray-600 mb-4">{selectedCourse.description}</p>
 
