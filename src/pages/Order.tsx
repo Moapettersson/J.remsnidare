@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Check, Mail, Phone, User, MapPin, MessageSquare, Package } from 'lucide-react';
+import { writeClient } from '@/lib/sanity';
 
 const Order = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -52,24 +53,29 @@ const handleInputChange = (
   }));
 };
 
+const handleSubmit = async () => {
+  setIsSubmitting(true);
 
-  const handleSubmit = async () => {
-    setIsSubmitting(true);
-    
-    // Här skulle du normalt skicka data till din backend/API
-    // För demo-syfte simulerar vi bara en delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    console.log('Beställningsdata som skulle skickas:', {
+  try {
+    const newOrder = {
+      _type: 'order', // måste matcha schemat
       product: orderData.product,
+      productType: orderData.productType,
       customerInfo: orderData.customerInfo,
       orderDetails: orderData.orderDetails,
-      timestamp: new Date().toISOString()
-    });
-    
-    setIsSubmitting(false);
+      timestamp: new Date().toISOString(),
+    };
+
+    const result = await writeClient.create(newOrder);
+    console.log('Order sparad i Sanity:', result);
+
     setIsSubmitted(true);
-  };
+  } catch (error) {
+    console.error('Kunde inte spara order:', error);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const nextStep = () => {
     if (currentStep < 3) setCurrentStep(currentStep + 1);
@@ -129,13 +135,13 @@ const handleInputChange = (
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                 currentStep >= step 
                   ? 'bg-primary text-white' 
-                  : 'bg-beige'
+                  : 'bg-stone-200'
               }`}>
                 {step}
               </div>
               {step < 3 && (
                 <div className={`w-16 h-0.5 mx-4 ${
-                  currentStep > step ? 'bg-primary' : 'bg-beige'
+                  currentStep > step ? 'bg-primary' : 'bg-stone-200'
                 }`} />
               )}
             </div>
