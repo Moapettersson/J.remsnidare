@@ -21,7 +21,7 @@ const course = {
     },
     {
       name: 'level',
-      title: 'Nivå',
+ 
       type: 'string',
       options: {
         list: [

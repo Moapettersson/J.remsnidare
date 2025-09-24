@@ -9,6 +9,7 @@ import Showroom from "./pages/Showroom";
 import Shop from "./pages/Shop";
 import Courses from "./pages/Courses";
 import About from "./pages/About";
+import Order from "./pages/Order";  // <-- Lägg till denna import
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/shop" element={<Shop />} />
           <Route path="/kurser" element={<Courses />} />
           <Route path="/om-oss" element={<About />} />
+          <Route path="/order" element={<Order />} />  {/* <-- Lägg till denna route */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

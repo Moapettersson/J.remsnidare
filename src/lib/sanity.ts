@@ -1,6 +1,7 @@
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 
+
 export const client = createClient({
   projectId: 'j0dqnwqh', // Ditt project ID från tidigare meddelande
   dataset: 'production',
@@ -56,3 +57,11 @@ export interface SanityCourse {
   featured?: boolean
   active?: boolean
 }
+// Write-klient för att skapa/uppdatera data
+export const writeClient = createClient({
+  projectId: 'j0dqnwqh',
+  dataset: 'production',
+  useCdn: false, // alltid false för skrivning
+  apiVersion: '2024-01-01',
+  token: import.meta.env.VITE_SANITY_API_TOKEN // Hämta token från .env
+});

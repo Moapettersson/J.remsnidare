@@ -79,8 +79,7 @@ useEffect(() => {
         product.category?.slug.current === selectedGroup
       );
 
-  const googleFormLink =
-    "https://docs.google.com/forms/d/e/1FAIpQLSfRLT8kS_mucH9NrZbjw3_1cPgW3wdNf3w2iUDYMpsrmyZePA/viewform?usp=header";
+const orderLink = "/order";
 
   if (loading) {
     return (
@@ -285,7 +284,7 @@ useEffect(() => {
                   Intresserad av denna produkt? Kontakta oss för mer information och leveranstid.
                 </p>
                 <div className="flex justify-center gap-4">
-                  <a href={googleFormLink} target="_blank" rel="noopener noreferrer">
+                  <a href={orderLink} target="_blank" rel="noopener noreferrer">
                     <Button size="lg">
                       Beställ nu <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>

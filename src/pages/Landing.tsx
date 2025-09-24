@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { ArrowRight, Users, ShoppingBag, GraduationCap, Heart } from "lucide-react";
-import saddleImage from "@/assets/intriguing-dark-brown-leather-seamless-texture-long-exposure-background-design-inspiration-immerse-yourself-rich-351761785.webp"
+import saddleImage from "@/assets/showroom/shaire.png"
 import Footer from "@/components/ui/footer";
 import leatherImage1 from "@/assets/sadelmakaren/working.jpg"; 
 import leatherImage2 from "@/assets/showroom/table.png";
