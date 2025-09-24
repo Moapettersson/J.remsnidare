@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Check, Mail, Phone, User, MapPin, MessageSquare, Package } from 'lucide-react';
-import { writeClient } from '@/lib/sanity';
+import { writeClient, urlFor, SanityProduct } from '@/lib/sanity';
 
 const Order = () => {
+  const location = useLocation();
+  const selectedProduct = location.state?.product as SanityProduct;
+  
   const [currentStep, setCurrentStep] = useState(1);
   const [orderData, setOrderData] = useState({
     product: '',
     productType: '',
-      color: '',
+    color: '',
     customerInfo: {
       name: '',
       email: '',
@@ -25,6 +29,17 @@ const Order = () => {
       preferredContact: 'email'
     }
   });
+
+  // Sätt produktnamn när komponenten laddas
+  useEffect(() => {
+    if (selectedProduct) {
+      setOrderData(prev => ({
+        ...prev,
+        product: selectedProduct.name,
+        productType: selectedProduct.category?.name || ''
+      }));
+    }
+  }, [selectedProduct]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -163,63 +178,129 @@ const handleSubmit = async () => {
         </div>
 
         <div className="max-w-2xl mx-auto">
-          {/* Step 1: Product Selection */}
-{/* Step 1: Produkt och färg */}
-{currentStep === 1 && (
-  <Card className="p-6">
-    <div className="space-y-6">
-      {/* Visa vald produkt */}
-      <div className="p-4 border rounded-lg bg-gray-50">
-        <p className="text-sm text-muted-foreground">Du har valt:</p>
-        <p className="font-medium text-lg">{orderData.product}</p>
-      </div>
+          {/* Step 1: Product Selection and Color */}
+          {currentStep === 1 && (
+            <Card className="p-6">
+              <div className="space-y-6">
+                {/* Visa vald produkt med bild */}
+                {selectedProduct ? (
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4 p-4 border rounded-lg bg-muted/50">
+                      {selectedProduct.image && (
+                        <img 
+                          src={urlFor(selectedProduct.image).width(80).height(80).fit('crop').url()} 
+                          alt={selectedProduct.name} 
+                          className="w-16 h-16 rounded object-cover"
+                        />
+                      )}
+                      <div>
+                        <p className="text-sm text-muted-foreground mb-1">Du har valt:</p>
+                        <h3 className="font-semibold text-lg text-foreground">{selectedProduct.name}</h3>
+                        {selectedProduct.category && (
+                          <Badge variant="secondary" className="text-xs mt-1">
+                            {selectedProduct.category.name}
+                          </Badge>
+                        )}
+                        {selectedProduct.price && (
+                          <p className="text-primary font-medium mt-1">{selectedProduct.price} SEK</p>
+                        )}
+                      </div>
+                    </div>
+                    
+                    {selectedProduct.description && (
+                      <div className="p-4 bg-muted/30 rounded-lg">
+                        <p className="text-sm text-muted-foreground">{selectedProduct.description}</p>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="p-4 border rounded-lg bg-muted/50">
+                    <p className="text-sm text-muted-foreground">Ingen produkt vald</p>
+                    <p className="font-medium text-lg text-foreground">Gå tillbaka till produktsidan för att välja en produkt</p>
+                  </div>
+                )}
 
-      {/* Färgval */}
-      <div>
-        <h4 className="text-sm font-medium mb-2">Välj färg *</h4>
-        <div className="grid grid-cols-2 gap-3">
-          {[
-            { title: 'Naturell', value: 'naturell' },
-            { title: 'Ljusbrun', value: 'ljusbrun' },
-            { title: 'Mörkbrun', value: 'mörkbrun' },
-            { title: 'Svart', value: 'svart' },
-            { title: 'Annat', value: 'annat' },
-          ].map((c) => (
-            <label
-              key={c.value}
-              className="flex items-center p-2 border rounded-md cursor-pointer hover:bg-gray-50"
-            >
-              <input
-                type="radio"
-                name="color"
-                value={c.value}
-                checked={orderData.color === c.value}
-                onChange={(e) =>
-                  setOrderData((prev) => ({
-                    ...prev,
-                    color: e.target.value,
-                  }))
-                }
-                className="mr-2 text-primary"
-              />
-              {c.title}
-            </label>
-          ))}
-        </div>
-      </div>
+                {/* Färgval */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-4 text-foreground">Välj färg</h4>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Välj den lädernyans som passar dig bäst
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {[
+                      { title: 'Naturell', value: 'naturell', color: '#E6D7B8' },
+                      { title: 'Ljusbrun', value: 'ljusbrun', color: '#A0692B' },
+                      { title: 'Mörkbrun', value: 'mörkbrun', color: '#5D3319' },
+                      { title: 'Svart', value: 'svart', color: '#1A1A1A' },
+                      { title: 'Annat', value: 'annat', color: '#8B7355' },
+                    ].map((c) => (
+                      <label
+                        key={c.value}
+                        className={`flex items-center p-3 border-2 rounded-lg cursor-pointer transition-all hover:bg-muted/50 ${
+                          orderData.color === c.value ? 'border-primary bg-primary/5' : 'border-border'
+                        }`}
+                      >
+                        <div 
+                          className="w-6 h-6 rounded-full border-2 border-border mr-3"
+                          style={{ backgroundColor: c.color }}
+                        />
+                        <input
+                          type="radio"
+                          name="color"
+                          value={c.value}
+                          checked={orderData.color === c.value}
+                          onChange={(e) =>
+                            setOrderData((prev) => ({
+                              ...prev,
+                              color: e.target.value,
+                            }))
+                          }
+                          className="sr-only"
+                        />
+                        <span className="font-medium text-foreground">{c.title}</span>
+                        {orderData.color === c.value && (
+                          <Check className="ml-auto h-5 w-5 text-primary" />
+                        )}
+                      </label>
+                    ))}
+                  </div>
+                  
+                  {orderData.color && (
+                    <div className="mt-4 p-3 bg-primary/5 border border-primary/20 rounded-lg">
+                      <p className="text-sm text-foreground">
+                        Vald färg: <span className="font-semibold text-primary">
+                          {[
+                            { title: 'Naturell', value: 'naturell' },
+                            { title: 'Ljusbrun', value: 'ljusbrun' },
+                            { title: 'Mörkbrun', value: 'mörkbrun' },
+                            { title: 'Svart', value: 'svart' },
+                            { title: 'Annat', value: 'annat' },
+                          ].find(c => c.value === orderData.color)?.title}
+                        </span>
+                      </p>
+                    </div>
+                  )}
+                </div>
 
-      <div className="flex justify-end pt-4">
-        <Button
-          type="button"
-          onClick={nextStep}
-          disabled={!orderData.color} // endast färg krävs
-        >
-          Nästa steg
-        </Button>
-      </div>
-    </div>
-  </Card>
-)}
+                <div className="flex justify-between pt-4">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => window.history.back()}
+                  >
+                    Tillbaka till produkter
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={nextStep}
+                    disabled={!orderData.color || !orderData.product}
+                  >
+                    Nästa steg
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          )}
 
 
           {/* Step 2: Customer Information */}
@@ -421,6 +502,10 @@ const handleSubmit = async () => {
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Produkt:</span>
                     <span className="font-medium">{orderData.product}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Färg:</span>
+                    <span className="font-medium">{orderData.color}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Namn:</span>

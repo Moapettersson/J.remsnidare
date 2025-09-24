@@ -84,7 +84,7 @@ useEffect(() => {
       );
 
   const handleProductClick = (product: SanityProduct) => {
-    navigate('/product-selection', { state: { product } });
+    navigate('/order', { state: { product } });
   };
 
   if (loading) {
