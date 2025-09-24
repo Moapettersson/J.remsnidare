@@ -90,7 +90,7 @@ const Navigation = () => {
                   onClick={() => scrollToSection(item.sectionId)}
                   className={`font-medium transition-colors hover:text-primary ${
                     isActive(item.path) 
-                      ? "text-primary border-b-2 border-primary" 
+                      ? "text-primary" 
                       : textColor
                   } cursor-pointer`}
                 >
@@ -102,7 +102,7 @@ const Navigation = () => {
                   to={item.path}
                   className={`font-medium transition-colors hover:text-primary ${
                     isActive(item.path) 
-                      ? "text-primary border-b-2 border-primary" 
+                      ? "text-primary" 
                       : textColor
                   }`}
                 >

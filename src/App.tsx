@@ -7,9 +7,10 @@ import Navigation from "./components/Navigation";
 import Landing from "./pages/Landing";
 import Showroom from "./pages/Showroom";
 import Shop from "./pages/Shop";
+import ProductSelection from "./pages/ProductSelection";
 import Courses from "./pages/Courses";
 import About from "./pages/About";
-import Order from "./pages/Order";  // <-- Lägg till denna import
+import Order from "./pages/Order";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,9 +26,10 @@ const App = () => (
           <Route path="/" element={<Landing />} />
           <Route path="/showroom" element={<Showroom />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/product-selection" element={<ProductSelection />} />
           <Route path="/kurser" element={<Courses />} />
           <Route path="/om-oss" element={<About />} />
-          <Route path="/order" element={<Order />} />  {/* <-- Lägg till denna route */}
+          <Route path="/order" element={<Order />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

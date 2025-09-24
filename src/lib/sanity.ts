@@ -32,6 +32,7 @@ export interface SanityProduct {
   dimensions?: string
   care?: string
   price?: number
+  color?: string
   inStock?: boolean
   featured?: boolean
 }
