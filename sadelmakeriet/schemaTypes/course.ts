@@ -19,19 +19,7 @@ const course = {
       },
       validation: (Rule: any) => Rule.required()
     },
-    {
-      name: 'level',
  
-      type: 'string',
-      options: {
-        list: [
-          {title: 'Nybörjare', value: 'beginner'},
-          {title: 'Medel', value: 'intermediate'},
-          {title: 'Avancerad', value: 'advanced'}
-        ]
-      },
-      validation: (Rule: any) => Rule.required()
-    },
     {
       name: 'duration',
       title: 'Varaktighet',

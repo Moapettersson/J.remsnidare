@@ -10,6 +10,7 @@ const Order = () => {
   const [orderData, setOrderData] = useState({
     product: '',
     productType: '',
+      color: '',
     customerInfo: {
       name: '',
       email: '',
@@ -163,53 +164,63 @@ const handleSubmit = async () => {
 
         <div className="max-w-2xl mx-auto">
           {/* Step 1: Product Selection */}
-          {currentStep === 1 && (
-            <Card className="p-6">
-              <div className="space-y-4">
-                <div className="grid gap-4">
-                  {availableProducts.map((product) => (
-                    <label key={product.id} className="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
-                      <input
-                        type="radio"
-                        name="product"
-                        value={product.name}
-                        checked={orderData.product === product.name}
-                        onChange={(e) => {
-                          setOrderData(prev => ({
-                            ...prev,
-                            product: e.target.value,
-                            productType: product.type
-                          }));
-                        }}
-                        className="text-primary"
-                      />
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between">
-                          <span className="font-medium">{product.name}</span>
-                          <Badge variant="outline">{product.price}</Badge>
-                        </div>
-                        {product.type === 'custom' && (
-                          <p className="text-sm text-muted-foreground mt-1">
-                            Beskriv din önskade produkt i nästa steg
-                          </p>
-                        )}
-                      </div>
-                    </label>
-                  ))}
-                </div>
-                
-                <div className="flex justify-end pt-4">
-                  <Button 
-                    type="button" 
-                    onClick={nextStep}
-                    disabled={!orderData.product}
-                  >
-                    Nästa steg
-                  </Button>
-                </div>
-              </div>
-            </Card>
-          )}
+{/* Step 1: Produkt och färg */}
+{currentStep === 1 && (
+  <Card className="p-6">
+    <div className="space-y-6">
+      {/* Visa vald produkt */}
+      <div className="p-4 border rounded-lg bg-gray-50">
+        <p className="text-sm text-muted-foreground">Du har valt:</p>
+        <p className="font-medium text-lg">{orderData.product}</p>
+      </div>
+
+      {/* Färgval */}
+      <div>
+        <h4 className="text-sm font-medium mb-2">Välj färg *</h4>
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            { title: 'Naturell', value: 'naturell' },
+            { title: 'Ljusbrun', value: 'ljusbrun' },
+            { title: 'Mörkbrun', value: 'mörkbrun' },
+            { title: 'Svart', value: 'svart' },
+            { title: 'Annat', value: 'annat' },
+          ].map((c) => (
+            <label
+              key={c.value}
+              className="flex items-center p-2 border rounded-md cursor-pointer hover:bg-gray-50"
+            >
+              <input
+                type="radio"
+                name="color"
+                value={c.value}
+                checked={orderData.color === c.value}
+                onChange={(e) =>
+                  setOrderData((prev) => ({
+                    ...prev,
+                    color: e.target.value,
+                  }))
+                }
+                className="mr-2 text-primary"
+              />
+              {c.title}
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex justify-end pt-4">
+        <Button
+          type="button"
+          onClick={nextStep}
+          disabled={!orderData.color} // endast färg krävs
+        >
+          Nästa steg
+        </Button>
+      </div>
+    </div>
+  </Card>
+)}
+
 
           {/* Step 2: Customer Information */}
           {currentStep === 2 && (

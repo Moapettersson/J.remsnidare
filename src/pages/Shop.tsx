@@ -5,6 +5,8 @@ import Footer from "@/components/ui/footer";
 import { useState, useEffect } from "react";
 import { X, ArrowRight, Loader2 } from "lucide-react";
 import { client, urlFor, SanityProduct, SanityCategory } from "@/lib/sanity";
+import { useRouter } from "next/navigation"; // ✅ rätt import för Next 13+
+
 
 const Shop = () => {
   const [selectedGroup, setSelectedGroup] = useState("alla");
@@ -12,6 +14,8 @@ const Shop = () => {
   const [products, setProducts] = useState<SanityProduct[]>([]);
   const [categories, setCategories] = useState<SanityCategory[]>([]);
   const [loading, setLoading] = useState(true);
+
+  
 
   // Queries för att hämta data från Sanity
   const productsQuery = `*[_type == "product"] {

@@ -43,6 +43,22 @@ const product = {
       name: 'price',
       title: 'Pris (SEK)',
       type: 'number'
+    },
+    {
+      name: 'color',
+      title: 'Färg',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Naturell', value: 'naturell' },
+          { title: 'Ljusbrun', value: 'ljusbrun' },
+          { title: 'Mörkbrun', value: 'mörkbrun' },
+          { title: 'Svart', value: 'svart' },
+          { title: 'Annat', value: 'annat' },
+        ],
+        layout: 'radio' // eller 'dropdown' om du föredrar en rullista
+      },
+      validation: (Rule: any) => Rule.required()
     }
   ],
   preview: {

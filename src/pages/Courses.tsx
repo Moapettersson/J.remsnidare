@@ -18,7 +18,6 @@ const Courses = () => {
     _id,
     title,
     slug,
-    level,
     duration,
     participants,
     price,
@@ -56,14 +55,6 @@ const Courses = () => {
       minimumFractionDigits: 0
     }).format(price);
 
-  const getLevelLabel = (level: string) => {
-    const labels = {
-      'beginner': 'Nybörjare',
-      'intermediate': 'Medel',
-      'advanced': 'Avancerad'
-    };
-    return labels[level as keyof typeof labels] || level;
-  };
 
   if (loading) {
     return (
@@ -127,7 +118,8 @@ const Courses = () => {
                     </div>
                   )}
                   
-                  <Badge className="mb-2" variant="outline">{getLevelLabel(course.level)}</Badge>
+               
+
                   <h3 className="text-xl font-sans font-semibold mb-2">{course.title}</h3>
                   <p className="text-muted-foreground text-sm mb-4">{course.description}</p>
                   <div className="font-bold">{formatPrice(course.price)}</div>
@@ -157,7 +149,7 @@ const Courses = () => {
               <X className="h-6 w-6" />
             </button>
 
-            <Badge className="mb-4" variant="outline">{getLevelLabel(selectedCourse.level)}</Badge>
+         
             <h2 className="font-sans text-2xl font-semibold mb-4 text-gray-900">{selectedCourse.title}</h2>
             <p className="text-gray-600 mb-4">{selectedCourse.description}</p>
 
