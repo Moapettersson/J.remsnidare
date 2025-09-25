@@ -8,7 +8,7 @@ import { writeClient, urlFor, SanityProduct } from '@/lib/sanity';
 
 const Order = () => {
   const location = useLocation();
-  const selectedProduct = location.state?.product as SanityProduct;
+const selectedProduct = location.state?.selectedProduct as SanityProduct;
   
   const [currentStep, setCurrentStep] = useState(1);
   const [orderData, setOrderData] = useState({
@@ -36,7 +36,7 @@ const Order = () => {
       setOrderData(prev => ({
         ...prev,
         product: selectedProduct.name,
-        productType: selectedProduct.category?.name || ''
+        
       }));
     }
   }, [selectedProduct]);
@@ -44,14 +44,6 @@ const Order = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Exempel på produkter (skulle kunna komma från props eller context)
-  const availableProducts = [
-    { id: 1, name: "Handväska - bärnsten", type: "väskor", price: "Pris på förfrågan" },
-    { id: 2, name: "Weekendbag för katten", type: "resenaren", price: "Pris på förfrågan" },
-    { id: 3, name: "Jaktväska i läder", type: "jagaren", price: "Pris på förfrågan" },
-    { id: 4, name: "Knivskydd", type: "jagaren", price: "Pris på förfrågan" },
-    { id: 5, name: "Anpassad beställning", type: "custom", price: "Pris på förfrågan" }
-  ];
 
 type NestedSections = "customerInfo" | "orderDetails";
 
@@ -103,19 +95,19 @@ const handleSubmit = async () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background flex items-center justify-center p-4"  style={{ backgroundColor: "var(--background)" }}>
         <Card className="max-w-md w-full p-8 text-center">
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Check className="h-8 w-8 text-green-600" />
           </div>
-          <h2 className="font-playfair text-2xl font-semibold mb-4">Tack för din beställning!</h2>
+          <h2 className="font-logo text-2xl font-semibold mb-4">Tack för din beställning!</h2>
           <p className="text-muted-foreground mb-6">
             Vi har mottagit din beställning och återkommer inom 24 timmar med pris och leveranstid.
           </p>
           <p className="text-sm text-muted-foreground mb-6">
             En bekräftelse har skickats till din e-post.
           </p>
-          <Button onClick={() => window.location.href = '/'} className="w-full">
+          <Button onClick={() => window.location.href = '/'} className="w-full ">
             Tillbaka till startsidan
           </Button>
         </Card>
@@ -132,7 +124,7 @@ const handleSubmit = async () => {
           <div className="flex items-center justify-between">
             <button 
               onClick={() => window.history.back()}
-              className="flex items-center text-muted-foreground hover:text-primary"
+              className="flex items-center text-muted-foreground hover:bg-beige-800 hover:text-beige-900"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Tillbaka
@@ -147,17 +139,21 @@ const handleSubmit = async () => {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="flex items-center justify-center mb-8">
           {[1, 2, 3].map((step) => (
-            <div key={step} className="flex items-center">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                currentStep >= step 
-                  ? 'bg-primary text-white' 
-                  : 'bg-stone-200'
-              }`}>
-                {step}
-              </div>
-              {step < 3 && (
-                <div className={`w-16 h-0.5 mx-4 ${
-                  currentStep > step ? 'bg-primary' : 'bg-stone-200'
+             <div key={step} className="flex items-center">
+      <div
+        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors
+          ${currentStep === step 
+            ? "bg-beige-900 text-white"   // aktivt steg = beige bubbla
+            : "text-gray-700"}        // inaktiva steg = bara text
+        `}
+      >
+        {step}
+      </div>
+
+      {step < 3 && (
+        <div
+          className={`w-16 h-0.5 mx-4 transition-colors
+            ${currentStep > step ? "bg-gray-300" : "bg-gray-300"}
                 }`} />
               )}
             </div>
@@ -165,7 +161,7 @@ const handleSubmit = async () => {
         </div>
 
         <div className="text-center mb-8">
-          <h2 className="text-xl font-semibold mb-2">
+          <h2 className="text-xl mb-2">
             {currentStep === 1 && "Välj produkt"}
             {currentStep === 2 && "Dina uppgifter"}
             {currentStep === 3 && "Slutför beställning"}
@@ -194,11 +190,11 @@ const handleSubmit = async () => {
                         />
                       )}
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Du har valt:</p>
-                        <h3 className="font-semibold text-lg text-foreground">{selectedProduct.name}</h3>
+                        <p className="text-m text-muted-foreground mb-1">Du har valt:</p>
+                        <h3 className="text-lg text-foreground">{selectedProduct.name}</h3>
                         {selectedProduct.category && (
                           <Badge variant="secondary" className="text-xs mt-1">
-                            {selectedProduct.category.name}
+                    
                           </Badge>
                         )}
                         {selectedProduct.price && (
@@ -222,7 +218,7 @@ const handleSubmit = async () => {
 
                 {/* Färgval */}
                 <div>
-                  <h4 className="text-lg font-semibold mb-4 text-foreground">Välj färg</h4>
+                  <h4 className="text-lg text-muted-foreground  mb-4">Välj färg</h4>
                   <p className="text-sm text-muted-foreground mb-4">
                     Välj den lädernyans som passar dig bäst
                   </p>
@@ -236,7 +232,7 @@ const handleSubmit = async () => {
                     ].map((c) => (
                       <label
                         key={c.value}
-                        className={`flex items-center p-3 border-2 rounded-lg cursor-pointer transition-all hover:bg-muted/50 ${
+                        className={`flex items-center p-3 border-2 rounded-lg cursor-pointer transition-all hover:bg-beige-800 hover:text-beige-900 ${
                           orderData.color === c.value ? 'border-primary bg-primary/5' : 'border-border'
                         }`}
                       >
@@ -265,35 +261,26 @@ const handleSubmit = async () => {
                     ))}
                   </div>
                   
-                  {orderData.color && (
-                    <div className="mt-4 p-3 bg-primary/5 border border-primary/20 rounded-lg">
-                      <p className="text-sm text-foreground">
-                        Vald färg: <span className="font-semibold text-primary">
-                          {[
-                            { title: 'Naturell', value: 'naturell' },
-                            { title: 'Ljusbrun', value: 'ljusbrun' },
-                            { title: 'Mörkbrun', value: 'mörkbrun' },
-                            { title: 'Svart', value: 'svart' },
-                            { title: 'Annat', value: 'annat' },
-                          ].find(c => c.value === orderData.color)?.title}
-                        </span>
-                      </p>
-                    </div>
-                  )}
+               
+                    
+                  
                 </div>
 
-                <div className="flex justify-between pt-4">
+                <div className="flex justify-between pt-4 ">
                   <Button
                     type="button"
-                    variant="outline"
+                   
                     onClick={() => window.history.back()}
+                    
+                    className="hover:bg-beige-800 hover:text-beige-900"
                   >
                     Tillbaka till produkter
                   </Button>
                   <Button
                     type="button"
                     onClick={nextStep}
-                    disabled={!orderData.color || !orderData.product}
+                     disabled={!orderData.color || !orderData.product}
+                  className="hover:bg-beige-800 hover:text-beige-900"
                   >
                     Nästa steg
                   </Button>
@@ -429,7 +416,8 @@ const handleSubmit = async () => {
               </div>
 
               <div className="flex justify-between pt-6">
-                <Button type="button" variant="outline" onClick={prevStep}>
+                <Button type="button" onClick={prevStep}  
+    className="hover:bg-beige-800 hover:text-beige-900">
                   Föregående
                 </Button>
                 <Button 
@@ -527,13 +515,13 @@ const handleSubmit = async () => {
               </Card>
 
               <div className="flex justify-between pt-4">
-                <Button type="button" variant="outline" onClick={prevStep}>
+                <Button type="button" onClick={prevStep}>
                   Föregående
                 </Button>
                 <Button 
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="bg-primary hover:bg-primary/90"
+                  className="bg-primary hover:bg-beige-800 hover:text-beige-900"
                 >
                   {isSubmitting ? 'Skickar...' : 'Skicka beställning'}
                 </Button>

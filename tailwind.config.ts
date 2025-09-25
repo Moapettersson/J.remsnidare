@@ -11,6 +11,7 @@ export default {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}"
   ],
+  
   theme: {
     container: {
       center: true,
@@ -48,6 +49,10 @@ export default {
           foreground: "hsl(var(--accent-foreground))",
         },
         "logo-text": "#200f04",
+          beige: {
+      DEFAULT: '#F5F5DC',   // ljus beige
+      900: '#a18979ff'        // mörkare beige
+    },
       },
       backgroundImage: {
         "gradient-leather": "var(--gradient-leather)",

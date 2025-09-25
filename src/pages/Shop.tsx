@@ -83,9 +83,9 @@ useEffect(() => {
         product.category?.slug.current === selectedGroup
       );
 
-  const handleProductClick = (product: SanityProduct) => {
-    navigate('/order', { state: { product } });
-  };
+    const handleProductClick = (product: SanityProduct) => {
+      navigate('/order', { state: { selectedProduct: product } });
+    };
 
   if (loading) {
     return (
@@ -99,7 +99,8 @@ useEffect(() => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 pt-24 text-center">
+      <section className="py-16 pt-24 text-center"
+            style={{ backgroundColor: "var(--background)" }}>
         <div className="max-w-3xl mx-auto px-4">
           <h1 className="font-logo text-4xl md:text-6xl mb-6 text-logo-text">
             Produkter
@@ -121,7 +122,7 @@ useEffect(() => {
                 className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                   selectedGroup === group.id 
                     ? "bg-primary text-primary-foreground" 
-                    : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-beige-800 hover:text-beige-900"
                 }`}
               >
                 {group.label}
@@ -130,64 +131,61 @@ useEffect(() => {
           </div>
 
           {/* Product Grid */}
-          {filteredProducts.length === 0 ? (
-            <div className="py-20 text-center">
-              <p className="text-muted-foreground text-lg">
-                Inga produkter hittades i denna kategori.
-              </p>
-            </div>
-          ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProducts.map((product) => (
-                <Card 
-                  key={product._id} 
-                  className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-lg"
-                  onClick={() => handleProductClick(product)}
-                >
-                  {/* Product Image */}
-                  <div className="aspect-square bg-muted overflow-hidden">
-                    {product.image ? (
-                      <img 
-                        src={urlFor(product.image).width(400).height(400).fit('crop').url()} 
-                        alt={product.name} 
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                        Ingen bild
-                      </div>
-                    )}
-                  </div>
+<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  {filteredProducts.map((product) => (
+    <Card 
+      key={product._id} 
+      className="overflow-hidden cursor-pointer transition-shadow duration-300 shadow-sm hover:shadow-md border border-gray-100 rounded-lg"
+      onClick={() => handleProductClick(product)}
+    >
+      {/* Produktbild */}
+      <div className="w-full aspect-[4/3] bg-gray-50 overflow-hidden">
+        {product.image ? (
+          <img 
+            src={urlFor(product.image).width(600).height(450).fit('crop').url()} 
+            alt={product.name} 
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-gray-400">
+            Ingen bild
+          </div>
+        )}
+      </div>
 
-                  {/* Product Info */}
-                  <div className="p-6">
-                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-                      {product.name}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                      {product.description}
-                    </p>
-                    {product.price && (
-                      <p className="text-primary font-semibold text-lg mb-4">
-                        {product.price} SEK
-                      </p>
-                    )}
-                    <Button 
-                      size="sm" 
-                      className="w-full group/btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleProductClick(product);
-                      }}
-                    >
-                      Välj produkt
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                    </Button>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          )}
+      {/* Produktinfo */}
+      <div className="p-6 text-center font-sans">
+        <h3 className="text-2xl  mb-2 text-gray-900 transition-colors group-hover:text-primary">
+          {product.name}
+        </h3>
+        {product.description && (
+          <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+            {product.description}
+          </p>
+        )}
+        {product.price && (
+          <p className="text-gray-800 font-medium text-base mb-4">
+            {product.price} SEK
+          </p>
+        )}
+
+        <Button 
+          size="sm" 
+          className="w-full bg-transparent border border-white-800 text-beige-800 hover:bg-beige-800 hover:text-beige-900 transition-all "
+          onClick={(e) => {
+            e.stopPropagation();
+            handleProductClick(product);
+          }}
+        >
+          Välj produkt
+          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </Button>
+      </div>
+    </Card>
+  ))}
+</div>
+
+       
         </div>
       </section>
 

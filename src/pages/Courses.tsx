@@ -95,7 +95,7 @@ const Courses = () => {
               {courses.map((course) => (
                 <Card 
                   key={course._id} 
-                  className="p-8 text-center hover:shadow-lg transition cursor-pointer transform hover:scale-105 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 hover:border-primary/1"
+                  className="p-8 text-center hover:bg-beige-800 hover:text-beige-900 transition  transition-all duration-300 hover:-translate-y-2 border-2 hover:border-primary/1"
                   onClick={() => setSelectedCourse(course)}
                 >
                   {course.featured && (
@@ -182,7 +182,7 @@ const Courses = () => {
             </div>
 
             <a href={googleFormLink} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="w-full">
+              <Button size="lg" className="w-full hover:bg-beige-800 hover:text-beige-900 xl:!text-xl">
                 Anmäl dig <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </a>

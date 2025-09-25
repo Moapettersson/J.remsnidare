@@ -32,7 +32,7 @@ export default function Footer() {
               <Link
                 key={item.path}
                 to={item.path}
-                className="hover:text-primary transition-colors"
+                className="hover:bg-beige-800 hover:text-beige-900"
               >
                 {item.label}
               </Link>
@@ -44,13 +44,13 @@ export default function Footer() {
             <div className="flex gap-4">
               <a
                 href="mailto:info@sadelmakeriet.se"
-                className="hover:text-primary transition-colors"
+                className="hover:bg-beige-800 hover:text-beige-900"
               >
                 <Mail className="w-5 h-5" />
               </a>
               <a
                 href="tel:+4600000000"
-                className="hover:text-primary transition-colors"
+               className="hover:bg-beige-800 hover:text-beige-900"
               >
                 <Phone className="w-5 h-5" />
               </a>
@@ -58,7 +58,7 @@ export default function Footer() {
                 href="https://www.instagram.com/j_remsnidare/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary transition-colors"
+                className="hover:bg-beige-800 hover:text-beige-900"
               >
                 <Instagram className="w-5 h-5" />
               </a>

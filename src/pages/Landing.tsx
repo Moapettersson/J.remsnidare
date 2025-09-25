@@ -51,17 +51,17 @@ const Landing = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <Button size="lg" asChild className="text-base sm:text-lg text-white shadow-lg w-full sm:w-auto">
+            <Button size="lg" asChild className="text-base sm:text-lg text-white shadow-lg w-full sm:w-auto hover:bg-beige-800 hover:text-beige-900">
               <Link to="/showroom">
                 Inspiration <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
             </Button>
-            <Button size="lg" asChild className="text-base sm:text-lg text-white shadow-lg w-full sm:w-auto">
+            <Button size="lg" asChild className="text-base sm:text-lg text-white shadow-lg w-full sm:w-auto hover:bg-beige-800 hover:text-beige-900">
               <Link to="/Shop">
                 Produkter <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
             </Button>
-            <Button size="lg" asChild className="text-base sm:text-lg text-white shadow-lg w-full sm:w-auto">
+            <Button size="lg" asChild className="text-base sm:text-lg text-white shadow-lg w-full sm:w-auto hover:bg-beige-800 hover:text-beige-900">
               <Link to="/Kurser">
                 Kurser <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
