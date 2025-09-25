@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import Footer from "@/components/ui/footer";
+import { ContactSection } from "@/components/ContactSection";
 import leatherImage1 from "@/assets/sadelmakaren/working.jpg";
 import leatherImage2 from "@/assets/showroom/table.png";
 
@@ -75,6 +76,11 @@ const About = () => {
           </div>
         ))}
       </section>
+
+      {/* Kontaktsektion */}
+      <ContactSection 
+        className="bg-secondary/20" 
+      />
 
       <Footer />
     </div>
