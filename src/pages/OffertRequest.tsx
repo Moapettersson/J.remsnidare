@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Mail, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { writeClient } from "@/lib/sanity";
 import { useToast } from "@/hooks/use-toast";
@@ -15,6 +15,7 @@ const OffertRequest = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   
   const [formData, setFormData] = useState({
+    product: 'Lindning',
     customerInfo: {
       name: '',
       email: '',
@@ -56,10 +57,20 @@ const OffertRequest = () => {
 
     try {
       const offertRequest = {
-        _type: 'offertRequest',
-        product: 'Lindning',
+        _type: 'order',
+        product: formData.product,
+        productType: 'Lindning - Offertförfrågan',
         customerInfo: formData.customerInfo,
-        lindningDetails: formData.lindningDetails,
+        orderDetails: {
+          message: `Lindningsdetaljer:
+Färg: ${formData.lindningDetails.color}
+Längd: ${formData.lindningDetails.length} cm
+Bredd: ${formData.lindningDetails.width} cm
+
+${formData.lindningDetails.message}`,
+          deliveryPreference: 'offert',
+          preferredContact: formData.lindningDetails.preferredContact
+        },
         timestamp: new Date().toISOString()
       };
 
@@ -209,14 +220,32 @@ const OffertRequest = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">Föredragen kontaktmetod</label>
-                <select
-                  className="w-full p-2 border border-input rounded-md bg-background"
-                  value={formData.lindningDetails.preferredContact}
-                  onChange={(e) => handleInputChange('lindningDetails', 'preferredContact', e.target.value)}
-                >
-                  <option value="email">E-post</option>
-                  <option value="phone">Telefon</option>
-                </select>
+                <div className="grid grid-cols-2 gap-4">
+                  <label className="flex items-center space-x-3 cursor-pointer p-3 rounded-md border hover:bg-accent transition-colors">
+                    <input
+                      type="radio"
+                      name="preferredContact"
+                      value="email"
+                      checked={formData.lindningDetails.preferredContact === 'email'}
+                      onChange={(e) => handleInputChange('lindningDetails', 'preferredContact', e.target.value)}
+                      className="text-primary"
+                    />
+                    <Mail className="h-4 w-4" />
+                    <span>E-post</span>
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer p-3 rounded-md border hover:bg-accent transition-colors">
+                    <input
+                      type="radio"
+                      name="preferredContact"
+                      value="phone"
+                      checked={formData.lindningDetails.preferredContact === 'phone'}
+                      onChange={(e) => handleInputChange('lindningDetails', 'preferredContact', e.target.value)}
+                      className="text-primary"
+                    />
+                    <Phone className="h-4 w-4" />
+                    <span>Telefon</span>
+                  </label>
+                </div>
               </div>
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium mb-2">Adress</label>
