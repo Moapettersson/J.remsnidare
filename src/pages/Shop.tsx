@@ -130,6 +130,27 @@ useEffect(() => {
             ))}
           </div>
 
+          {/* Lindning Special Section */}
+          <div className="mb-12">
+            <Card className="overflow-hidden border-2 border-primary/20 bg-gradient-to-r from-primary/5 to-primary/10">
+              <div className="p-8 text-center">
+                <h3 className="text-2xl font-bold mb-4">Lindning på mått</h3>
+                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                  Behöver du lindning i specifika mått? Vi tillverkar lindningar efter dina exakta behov. 
+                  Välj färg och dimensioner för att få en personlig offert.
+                </p>
+                <Button 
+                  size="lg"
+                  onClick={() => navigate('/offert-lindning')}
+                  className="bg-primary hover:bg-primary/90"
+                >
+                  Be om offert för lindning
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            </Card>
+          </div>
+
           {/* Product Grid */}
 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
   {filteredProducts.map((product) => (

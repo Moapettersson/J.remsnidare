@@ -10,6 +10,7 @@ import Shop from "./pages/Shop";
 import Courses from "./pages/Courses";
 import About from "./pages/About";
 import Order from "./pages/Order";
+import OffertRequest from "./pages/OffertRequest";
 import NotFound from "./pages/NotFound";
 import { CookieConsent } from "./components/CookieConsent";
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/kurser" element={<Courses />} />
           <Route path="/om-oss" element={<About />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/offert-lindning" element={<OffertRequest />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
