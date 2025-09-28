@@ -138,7 +138,8 @@ useEffect(() => {
       </section>
 
       {/* Filter Section */}
-      <section className="py-8">
+      <section className="py-8"
+        style={{ backgroundColor: "var(--background)" }}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 mb-12">
             {groups.map((group) => (
@@ -217,7 +218,9 @@ useEffect(() => {
 
           {/* Product Grid */}
 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  
   {filteredProducts.map((product) => (
+    
     <Card 
       key={product._id} 
       className="overflow-hidden cursor-pointer transition-shadow duration-300 shadow-sm hover:shadow-md border border-gray-100 rounded-lg"

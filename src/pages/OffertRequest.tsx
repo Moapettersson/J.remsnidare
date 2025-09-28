@@ -96,7 +96,8 @@ ${formData.lindningDetails.message}`,
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center py-24">
+      <div className="min-h-screen flex items-center justify-center py-24"
+         style={{ backgroundColor: "var(--background)" }}>
         <Card className="max-w-md mx-auto p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Tack för din förfrågan!</h2>
           <p className="text-muted-foreground mb-6">
@@ -111,7 +112,8 @@ ${formData.lindningDetails.message}`,
   }
 
   return (
-    <div className="min-h-screen py-24">
+    <div className="min-h-screen py-24"
+     style={{ backgroundColor: "var(--background)" }}>
       <div className="max-w-2xl mx-auto px-4">
         {/* Header */}
         <div className="flex items-center mb-8">
