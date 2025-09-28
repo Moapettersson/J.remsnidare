@@ -5,6 +5,10 @@ import { useState, useEffect } from "react";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { client, urlFor, SanityProduct, SanityCategory } from "@/lib/sanity";
 import { useNavigate } from "react-router-dom";
+import furnitureImage1 from "@/assets/sadelmakaren/working.jpg";
+import furnitureImage2 from "@/assets/sadelmakaren/working.jpg";
+import furnitureImage3 from "@/assets/sadelmakaren/working.jpg";
+import furnitureImage4 from "@/assets/sadelmakaren/working.jpg";
 
 
 const Shop = () => {
@@ -13,6 +17,28 @@ const Shop = () => {
   const [categories, setCategories] = useState<SanityCategory[]>([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const lindningExamples = [
+  { 
+    image: furnitureImage1, 
+    title: "Lindning exempel 1", 
+    text: <p>"Handgjord lindning för professionella behov."</p>
+  },
+  { 
+    image: furnitureImage2, 
+    title: "Lindning exempel 2", 
+    text: <p>"Anpassade dimensioner efter dina önskemål."</p>
+  },
+  { 
+    image: furnitureImage3, 
+    title: "Lindning exempel 3", 
+    text: <p>"Kvalitetsläder som håller över tid."</p>
+  },
+  { 
+    image: furnitureImage4, 
+    title: "Lindning exempel 4", 
+    text: <p>"Traditionellt hantverk i modern tillämpning."</p>
+  },
+];
 
   
 
@@ -130,28 +156,64 @@ useEffect(() => {
             ))}
           </div>
 
-          {/* Lindning Special Section - only show when lindning category is selected */}
-          {selectedGroup === 'lindning' && (
-            <div className="mb-12">
-              <Card className="overflow-hidden border-2 border-primary/20 bg-gradient-to-r from-primary/5 to-primary/10">
-                <div className="p-8 text-center">
-                  <h3 className="text-2xl font-bold mb-4">Lindning på mått</h3>
-                  <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                    Behöver du lindning i specifika mått? Vi tillverkar lindningar efter dina exakta behov. 
-                    Välj färg och dimensioner för att få en personlig offert.
-                  </p>
-                  <Button 
-                    size="lg"
-                    onClick={() => navigate('/offert-lindning')}
-                    className="bg-primary hover:bg-primary/90"
-                  >
-                    Be om offert för lindning
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </Card>
-            </div>
-          )}
+
+{/* Lindning Special Section - only show when lindning category is selected */}
+{selectedGroup === "lindning" && (
+  <div className="mb-12"
+    style={{ backgroundColor: "var(--background)" }}>
+    <Card className="overflow-hidden bg-gradient-to-r from-primary/5 to-primary/10"
+     style={{ backgroundColor: "var(--background)" }}>
+      <div className="p-8 text-center">
+        <h3 className="text-3xl font-bold mb-4">Lindning</h3>
+        <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          Behöver du lindning i specifika mått? Vi tillverkar lindningar efter dina
+          exakta behov. Välj färg och dimensioner för att få en personlig offert.
+        </p>
+        <Button
+          size="lg"
+          onClick={() => navigate("/offert-lindning")}
+          className="bg-primary hover:bg-primary/90"
+        >
+          Be om offert för lindning
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
+
+        {/* Bildgrid - samma bildstil som showroom men i grid-layout */}
+        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="overflow-hidden rounded-xl shadow-lg">
+            <img
+              src={furnitureImage1}
+              alt="Läderhantverk exempel 1"
+              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div className="overflow-hidden rounded-xl shadow-lg">
+            <img
+              src={furnitureImage2}
+              alt="Läderhantverk exempel 2"
+              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div className="overflow-hidden rounded-xl shadow-lg">
+            <img
+              src={furnitureImage3}
+              alt="Läderhantverk exempel 3"
+              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div className="overflow-hidden rounded-xl shadow-lg">
+            <img
+              src={furnitureImage4}
+              alt="Läderhantverk exempel 4"
+              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+        </div>
+      </div>
+    </Card>
+  </div>
+)}
+
 
           {/* Product Grid */}
 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
