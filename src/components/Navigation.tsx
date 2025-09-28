@@ -134,7 +134,7 @@ const Navigation = () => {
                   <button
                     key={index}
                     onClick={() => scrollToSection(item.sectionId)}
-                    className={`font-medium text-base transition-colors hover:text-primary ${
+                    className={`font-medium text-base transition-colors hover:bg-beige-800 hover:text-beige-900" ${
                       isActive(item.path) ? "text-primary" : textColor
                     } text-left cursor-pointer`}
                   >
@@ -145,7 +145,7 @@ const Navigation = () => {
                     key={item.path}
                     to={item.path}
                     onClick={() => setIsOpen(false)}
-                    className={`font-medium text-base transition-colors hover:text-primary ${
+                    className={`font-medium text-base transition-colors hover:bg-beige-800 hover:text-beige-900"${
                       isActive(item.path) ? "text-primary" : textColor
                     }`}
                   >

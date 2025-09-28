@@ -1,3 +1,4 @@
+// src/pages/OffertRequest.tsx
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,7 +16,7 @@ const OffertRequest = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   
   const [formData, setFormData] = useState({
-    product: 'Lindning',
+    productType: 'lindning',
     customerInfo: {
       name: '',
       email: '',
@@ -24,13 +25,22 @@ const OffertRequest = () => {
       city: '',
       postalCode: ''
     },
-    lindningDetails: {
-      color: '',
-      length: '',
-      width: '',
-      message: '',
-      preferredContact: 'email'
-    }
+    productDetails: {
+      description: '',
+      specifications: {
+        color: '',
+        dimensions: {
+          length: '',
+          width: '',
+          height: ''
+        },
+        material: '',
+        additionalRequirements: ''
+      }
+    },
+    preferredContact: 'email',
+
+    estimatedBudget: ''
   });
 
   const colorOptions = [
@@ -38,17 +48,25 @@ const OffertRequest = () => {
     { title: 'Ljusbrun', value: 'ljusbrun' },
     { title: 'Mörkbrun', value: 'mörkbrun' },
     { title: 'Svart', value: 'svart' },
-    { title: 'Annat', value: 'annat' }
+    { title: 'Annat (beskriv i meddelande)', value: 'annat' }
   ];
 
-  const handleInputChange = (section: 'customerInfo' | 'lindningDetails', field: string, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [section]: {
-        ...prev[section],
-        [field]: value
+
+
+  const handleInputChange = (path: string, value: any) => {
+    const keys = path.split('.');
+    setFormData(prev => {
+      const updated = { ...prev };
+      let current: any = updated;
+      
+      for (let i = 0; i < keys.length - 1; i++) {
+        current[keys[i]] = { ...current[keys[i]] };
+        current = current[keys[i]];
       }
-    }));
+      
+      current[keys[keys.length - 1]] = value;
+      return updated;
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -56,25 +74,29 @@ const OffertRequest = () => {
     setIsSubmitting(true);
 
     try {
-      const offertRequest = {
-        _type: 'order',
-        product: formData.product,
-        productType: 'Lindning - Offertförfrågan',
+      const offertRequestData = {
+        _type: 'offertRequest',
+        productType: formData.productType,
         customerInfo: formData.customerInfo,
-        orderDetails: {
-          message: `Lindningsdetaljer:
-Färg: ${formData.lindningDetails.color}
-Längd: ${formData.lindningDetails.length} cm
-Bredd: ${formData.lindningDetails.width} cm
-
-${formData.lindningDetails.message}`,
-          deliveryPreference: 'offert',
-          preferredContact: formData.lindningDetails.preferredContact
+        productDetails: {
+          description: `Lindning - ${formData.productDetails.specifications.color}`,
+          specifications: {
+            ...formData.productDetails.specifications,
+            dimensions: {
+              length: parseInt(formData.productDetails.specifications.dimensions.length) || null,
+              width: parseInt(formData.productDetails.specifications.dimensions.width) || null,
+              height: parseInt(formData.productDetails.specifications.dimensions.height) || null
+            }
+          }
         },
-        timestamp: new Date().toISOString()
+        preferredContact: formData.preferredContact,
+
+        estimatedBudget: formData.estimatedBudget ? parseInt(formData.estimatedBudget) : null,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
       };
 
-      await writeClient.create(offertRequest);
+      await writeClient.create(offertRequestData);
       
       toast({
         title: "Offertförfrågan skickad!",
@@ -136,15 +158,15 @@ ${formData.lindningDetails.message}`,
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium mb-2">Färg *</label>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 gap-2">
                   {colorOptions.map((color) => (
                     <label key={color.value} className="flex items-center space-x-2 cursor-pointer">
                       <input
                         type="radio"
                         name="color"
                         value={color.value}
-                        checked={formData.lindningDetails.color === color.value}
-                        onChange={(e) => handleInputChange('lindningDetails', 'color', e.target.value)}
+                        checked={formData.productDetails.specifications.color === color.value}
+                        onChange={(e) => handleInputChange('productDetails.specifications.color', e.target.value)}
                         className="text-primary"
                         required
                       />
@@ -160,8 +182,8 @@ ${formData.lindningDetails.message}`,
                   <Input
                     type="number"
                     placeholder="t.ex. 150"
-                    value={formData.lindningDetails.length}
-                    onChange={(e) => handleInputChange('lindningDetails', 'length', e.target.value)}
+                    value={formData.productDetails.specifications.dimensions.length}
+                    onChange={(e) => handleInputChange('productDetails.specifications.dimensions.length', e.target.value)}
                     required
                   />
                 </div>
@@ -170,19 +192,33 @@ ${formData.lindningDetails.message}`,
                   <Input
                     type="number"
                     placeholder="t.ex. 5"
-                    value={formData.lindningDetails.width}
-                    onChange={(e) => handleInputChange('lindningDetails', 'width', e.target.value)}
+                    value={formData.productDetails.specifications.dimensions.width}
+                    onChange={(e) => handleInputChange('productDetails.specifications.dimensions.width', e.target.value)}
                     required
                   />
                 </div>
               </div>
 
+
+              <div>
+                <label className="block text-sm font-medium mb-2">Ungefärlig budget (SEK)</label>
+                <Input
+                  type="number"
+                  placeholder="Valfritt - hjälper oss att ge bättre förslag"
+                  value={formData.estimatedBudget}
+                  onChange={(e) => handleInputChange('estimatedBudget', e.target.value)}
+                />
+                <p className="text-xs text-muted-foreground mt-1">
+                  Detta hjälper oss att anpassa vårt förslag efter dina behov
+                </p>
+              </div>
+
               <div>
                 <label className="block text-sm font-medium mb-2">Ytterligare önskemål</label>
                 <Textarea
-                  placeholder="Beskriv eventuella speciella önskemål eller frågor..."
-                  value={formData.lindningDetails.message}
-                  onChange={(e) => handleInputChange('lindningDetails', 'message', e.target.value)}
+                  placeholder="Beskriv eventuella speciella önskemål, användningsområde eller frågor..."
+                  value={formData.productDetails.specifications.additionalRequirements}
+                  onChange={(e) => handleInputChange('productDetails.specifications.additionalRequirements', e.target.value)}
                   rows={3}
                 />
               </div>
@@ -199,7 +235,7 @@ ${formData.lindningDetails.message}`,
                 <Input
                   type="text"
                   value={formData.customerInfo.name}
-                  onChange={(e) => handleInputChange('customerInfo', 'name', e.target.value)}
+                  onChange={(e) => handleInputChange('customerInfo.name', e.target.value)}
                   required
                 />
               </div>
@@ -208,7 +244,7 @@ ${formData.lindningDetails.message}`,
                 <Input
                   type="email"
                   value={formData.customerInfo.email}
-                  onChange={(e) => handleInputChange('customerInfo', 'email', e.target.value)}
+                  onChange={(e) => handleInputChange('customerInfo.email', e.target.value)}
                   required
                 />
               </div>
@@ -217,7 +253,7 @@ ${formData.lindningDetails.message}`,
                 <Input
                   type="tel"
                   value={formData.customerInfo.phone}
-                  onChange={(e) => handleInputChange('customerInfo', 'phone', e.target.value)}
+                  onChange={(e) => handleInputChange('customerInfo.phone', e.target.value)}
                 />
               </div>
               <div>
@@ -228,8 +264,8 @@ ${formData.lindningDetails.message}`,
                       type="radio"
                       name="preferredContact"
                       value="email"
-                      checked={formData.lindningDetails.preferredContact === 'email'}
-                      onChange={(e) => handleInputChange('lindningDetails', 'preferredContact', e.target.value)}
+                      checked={formData.preferredContact === 'email'}
+                      onChange={(e) => handleInputChange('preferredContact', e.target.value)}
                       className="text-primary"
                     />
                     <Mail className="h-4 w-4" />
@@ -240,8 +276,8 @@ ${formData.lindningDetails.message}`,
                       type="radio"
                       name="preferredContact"
                       value="phone"
-                      checked={formData.lindningDetails.preferredContact === 'phone'}
-                      onChange={(e) => handleInputChange('lindningDetails', 'preferredContact', e.target.value)}
+                      checked={formData.preferredContact === 'phone'}
+                      onChange={(e) => handleInputChange('preferredContact', e.target.value)}
                       className="text-primary"
                     />
                     <Phone className="h-4 w-4" />
@@ -254,7 +290,7 @@ ${formData.lindningDetails.message}`,
                 <Input
                   type="text"
                   value={formData.customerInfo.address}
-                  onChange={(e) => handleInputChange('customerInfo', 'address', e.target.value)}
+                  onChange={(e) => handleInputChange('customerInfo.address', e.target.value)}
                 />
               </div>
               <div>
@@ -262,7 +298,7 @@ ${formData.lindningDetails.message}`,
                 <Input
                   type="text"
                   value={formData.customerInfo.city}
-                  onChange={(e) => handleInputChange('customerInfo', 'city', e.target.value)}
+                  onChange={(e) => handleInputChange('customerInfo.city', e.target.value)}
                 />
               </div>
               <div>
@@ -270,7 +306,7 @@ ${formData.lindningDetails.message}`,
                 <Input
                   type="text"
                   value={formData.customerInfo.postalCode}
-                  onChange={(e) => handleInputChange('customerInfo', 'postalCode', e.target.value)}
+                  onChange={(e) => handleInputChange('customerInfo.postalCode', e.target.value)}
                 />
               </div>
             </div>
