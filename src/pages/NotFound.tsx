@@ -1,6 +1,7 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const NotFound = () => {
   const location = useLocation();
@@ -10,7 +11,12 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-warm"
+    <>
+      <SEO 
+        title="Sidan hittades inte" 
+        description="Sidan du söker kunde inte hittas. Gå tillbaka till startsidan för att fortsätta utforska Sadelmakeriet."
+      />
+      <div className="flex min-h-screen items-center justify-center bg-gradient-warm"
     style={{ backgroundColor: "var(--background)" }}>
       
       <div className="text-center">
@@ -23,7 +29,8 @@ const NotFound = () => {
           </Link>
         </Button>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

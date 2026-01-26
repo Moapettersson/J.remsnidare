@@ -6,6 +6,7 @@ import saddleImage from "@/assets/showroom/shaire.png"
 import Footer from "@/components/ui/footer";
 import leatherImage1 from "@/assets/sadelmakaren/working.jpg"; 
 import leatherImage2 from "@/assets/showroom/table.png";
+import SEO from "@/components/SEO";
 
 const storySections = [
   {
@@ -28,6 +29,7 @@ const storySections = [
 const Landing = () => {
   return (
     <div className="min-h-screen">
+      <SEO />
       {/* Hero Section */}
       <section 
         id="home"

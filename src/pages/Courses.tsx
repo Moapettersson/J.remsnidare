@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import Footer from "@/components/ui/footer";
 import { Clock, Users, Calendar, X, ArrowRight, Loader2 } from "lucide-react";
 import { client, urlFor, SanityCourse } from "@/lib/sanity";
+import SEO from "@/components/SEO";
 
 const Courses = () => {
   const [courses, setCourses] = useState<SanityCourse[]>([]);
@@ -66,7 +67,12 @@ const Courses = () => {
   }
 
   return (
-   <div className="min-h-screen">
+    <>
+      <SEO 
+        title="Kurser" 
+        description="Lär dig läderhantverk på våra kurser. Från nybörjare till avancerad - upptäck konsten att arbeta med läder under professionell handledning."
+      />
+      <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 relative pt-20 pb-10 text-center"
       style={{ backgroundColor: "var(--background)" }}>
@@ -191,7 +197,8 @@ const Courses = () => {
       )}
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

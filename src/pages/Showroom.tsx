@@ -1,13 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
 import Footer from "@/components/ui/footer";
 import { ArrowRight } from "lucide-react";
-
 import furnitureImage1 from "@/assets/showroom/shaire.png";
 import furnitureImage2 from "@/assets/showroom/lamp.png";
 import furnitureImage4 from "@/assets/showroom/computer.jpg";
 import furnitureImage3 from "@/assets/showroom/table.png";
+import SEO from "@/components/SEO";
 
 const projects = [
   { 
@@ -38,7 +37,12 @@ const projects = [
 
 const Showroom = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO 
+        title="Inspiration" 
+        description="Utforska vårt showroom med exklusiva lädermöbler och inredningsprojekt. Inspiration för arkitekter, designers och hem."
+      />
+      <div className="min-h-screen bg-background">
       {/* Hero Section */}
     <section
       className="py-20 relative pt-20 pb-16 text-center"
@@ -111,7 +115,8 @@ const Showroom = () => {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 
