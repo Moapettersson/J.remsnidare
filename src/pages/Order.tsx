@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Check, Mail, Phone, User, MapPin, MessageSquare, Package } from 'lucide-react';
 import { writeClient, urlFor, SanityProduct } from '@/lib/sanity';
+import SEO from '@/components/SEO';
 
 const Order = () => {
   const location = useLocation();
@@ -116,8 +117,13 @@ const handleSubmit = async () => {
   }
 
   return (
-    <div className="min-h-screen bg-background"
-    style={{ backgroundColor: "var(--background)" }}>
+    <>
+      <SEO 
+        title="Beställning" 
+        description="Beställ din handgjorda läderprodukt från Sadelmakeriet. Vi skapar unika produkter efter dina önskemål."
+      />
+      <div className="min-h-screen bg-background"
+      style={{ backgroundColor: "var(--background)" }}>
       {/* Header */}
       <div className="bg-background border-b">
         <div className="max-w-4xl mx-auto px-4 py-6">
@@ -530,7 +536,8 @@ const handleSubmit = async () => {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

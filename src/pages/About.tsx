@@ -3,6 +3,7 @@ import Footer from "@/components/ui/footer";
 import { ContactSection } from "@/components/ContactSection";
 import leatherImage1 from "@/assets/sadelmakaren/working.jpg";
 import leatherImage2 from "@/assets/showroom/table.png";
+import SEO from "@/components/SEO";
 
 const storySections = [
   {
@@ -24,6 +25,11 @@ const storySections = [
 
 const About = () => {
   return (
+    <>
+      <SEO 
+        title="Om Oss" 
+        description="Lär känna Sadelmakeriet - traditionellt läderhantverk med passion. Upptäck vår historia och vårt engagemang för kvalitet och hållbarhet."
+      />
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section
@@ -84,6 +90,7 @@ const About = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

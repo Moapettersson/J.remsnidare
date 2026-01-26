@@ -8,6 +8,7 @@ import { ArrowLeft, Mail, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { writeClient } from "@/lib/sanity";
 import { useToast } from "@/hooks/use-toast";
+import SEO from "@/components/SEO";
 
 const OffertRequest = () => {
   const navigate = useNavigate();
@@ -134,7 +135,12 @@ const OffertRequest = () => {
   }
 
   return (
-    <div className="min-h-screen py-24"
+    <>
+      <SEO 
+        title="Be om offert - Lindning" 
+        description="Få en offert för skräddarsydd läderlindning. Välj färg och mått för att få ett personligt prisförslag."
+      />
+      <div className="min-h-screen py-24"
      style={{ backgroundColor: "var(--background)" }}>
       <div className="max-w-2xl mx-auto px-4">
         {/* Header */}
@@ -321,7 +327,8 @@ const OffertRequest = () => {
           </Button>
         </form>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

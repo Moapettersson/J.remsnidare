@@ -6,6 +6,7 @@ import { ArrowRight, Loader2 } from "lucide-react";
 import { client, urlFor, SanityProduct, SanityCategory } from "@/lib/sanity";
 import { useNavigate } from "react-router-dom";
 import furnitureImage1 from "@/assets/sadelmakaren/working.jpg";
+import SEO from "@/components/SEO";
 import furnitureImage2 from "@/assets/sadelmakaren/working.jpg";
 import furnitureImage3 from "@/assets/sadelmakaren/working.jpg";
 import furnitureImage4 from "@/assets/sadelmakaren/working.jpg";
@@ -123,7 +124,12 @@ useEffect(() => {
   }
 
   return (
-    <div className="min-h-screen">
+    <>
+      <SEO 
+        title="Produkter" 
+        description="Upptäck vårt utbud av handgjorda läderprodukter. Väskor, bälten, accessoarer och mer - allt tillverkat med traditionellt hantverk."
+      />
+      <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-16 pt-24 text-center"
             style={{ backgroundColor: "var(--background)" }}>
@@ -278,7 +284,8 @@ useEffect(() => {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 
