@@ -29,7 +29,27 @@ const storySections = [
 const Landing = () => {
   return (
     <div className="min-h-screen">
-      <SEO />
+      <SEO 
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Sadelmakeriet",
+            "description": "Traditionellt läderhantverk och sadelmakeri. Professionella tjänster för arkitekter och inredare samt kurser för privatpersoner.",
+            "url": "https://sadelmakeriet.se",
+            "image": "https://sadelmakeriet.se/og-image.jpg",
+            "address": { "@type": "PostalAddress", "addressCountry": "SE" },
+            "priceRange": "$$",
+            "knowsAbout": ["Läderhantverk", "Sadelmakeri", "Läderkurser", "Lädermöbler"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Sadelmakeriet",
+            "url": "https://sadelmakeriet.se"
+          }
+        ]}
+      />
       {/* Hero Section */}
       <section 
         id="home"

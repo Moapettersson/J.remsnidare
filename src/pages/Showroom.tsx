@@ -41,6 +41,14 @@ const Showroom = () => {
       <SEO 
         title="Inspiration" 
         description="Utforska vårt showroom med exklusiva lädermöbler och inredningsprojekt. Inspiration för arkitekter, designers och hem."
+        url="https://sadelmakeriet.se/showroom"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Inspirations ateljén | Sadelmakeriet",
+          "description": "Utforska vårt showroom med exklusiva lädermöbler och inredningsprojekt.",
+          "url": "https://sadelmakeriet.se/showroom"
+        }}
       />
       <div className="min-h-screen bg-background">
       {/* Hero Section */}

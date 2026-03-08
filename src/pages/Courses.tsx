@@ -71,6 +71,15 @@ const Courses = () => {
       <SEO 
         title="Kurser" 
         description="Lär dig läderhantverk på våra kurser. Från nybörjare till avancerad - upptäck konsten att arbeta med läder under professionell handledning."
+        url="https://sadelmakeriet.se/kurser"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "Läderhantverkskurser | Sadelmakeriet",
+          "description": "Kurser i läderhantverk - från nybörjare till avancerad.",
+          "url": "https://sadelmakeriet.se/kurser",
+          "itemListElement": []
+        }}
       />
       <div className="min-h-screen">
       {/* Hero Section */}
