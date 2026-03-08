@@ -15,6 +15,11 @@ const NotFound = () => {
       <SEO 
         title="Sidan hittades inte" 
         description="Sidan du söker kunde inte hittas. Gå tillbaka till startsidan för att fortsätta utforska Sadelmakeriet."
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "404 - Sidan hittades inte"
+        }}
       />
       <div className="flex min-h-screen items-center justify-center bg-gradient-warm"
     style={{ backgroundColor: "var(--background)" }}>

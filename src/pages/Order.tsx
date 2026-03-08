@@ -121,6 +121,14 @@ const handleSubmit = async () => {
       <SEO 
         title="Beställning" 
         description="Beställ din handgjorda läderprodukt från Sadelmakeriet. Vi skapar unika produkter efter dina önskemål."
+        url="https://sadelmakeriet.se/order"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Beställning | Sadelmakeriet",
+          "description": "Beställ din handgjorda läderprodukt.",
+          "url": "https://sadelmakeriet.se/order"
+        }}
       />
       <div className="min-h-screen bg-background"
       style={{ backgroundColor: "var(--background)" }}>

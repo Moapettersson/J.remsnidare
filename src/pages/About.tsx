@@ -29,6 +29,14 @@ const About = () => {
       <SEO 
         title="Om Oss" 
         description="Lär känna Sadelmakeriet - traditionellt läderhantverk med passion. Upptäck vår historia och vårt engagemang för kvalitet och hållbarhet."
+        url="https://sadelmakeriet.se/om-oss"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "Om Sadelmakeriet",
+          "description": "Traditionellt läderhantverk med passion - vår historia och vårt engagemang för kvalitet.",
+          "url": "https://sadelmakeriet.se/om-oss"
+        }}
       />
     <div className="min-h-screen bg-background">
       {/* Hero Section */}

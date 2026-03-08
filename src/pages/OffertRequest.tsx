@@ -139,6 +139,14 @@ const OffertRequest = () => {
       <SEO 
         title="Be om offert - Lindning" 
         description="Få en offert för skräddarsydd läderlindning. Välj färg och mått för att få ett personligt prisförslag."
+        url="https://sadelmakeriet.se/offert-lindning"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Offertförfrågan - Lindning | Sadelmakeriet",
+          "description": "Få en offert för skräddarsydd läderlindning.",
+          "url": "https://sadelmakeriet.se/offert-lindning"
+        }}
       />
       <div className="min-h-screen py-24"
      style={{ backgroundColor: "var(--background)" }}>

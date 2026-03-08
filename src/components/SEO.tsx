@@ -6,6 +6,7 @@ interface SEOProps {
   image?: string;
   url?: string;
   type?: string;
+  jsonLd?: Record<string, any> | Record<string, any>[];
 }
 
 const defaultMeta = {
@@ -21,11 +22,27 @@ export const SEO = ({
   description = defaultMeta.description, 
   image = defaultMeta.image,
   url = defaultMeta.url,
-  type = defaultMeta.type
+  type = defaultMeta.type,
+  jsonLd
 }: SEOProps) => {
   const fullTitle = title 
     ? `${title} | Sadelmakeriet` 
     : defaultMeta.title;
+
+  const jsonLdData = jsonLd || {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Sadelmakeriet",
+    "description": defaultMeta.description,
+    "url": defaultMeta.url,
+    "image": `${defaultMeta.url}${defaultMeta.image}`,
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "SE"
+    },
+    "priceRange": "$$",
+    "knowsAbout": ["Läderhantverk", "Sadelmakeri", "Läderkurser", "Lädermöbler"]
+  };
 
   return (
     <Helmet>
@@ -55,6 +72,11 @@ export const SEO = ({
       <meta name="language" content="Swedish" />
       <meta name="author" content="Sadelmakeriet" />
       <link rel="canonical" href={url} />
+
+      {/* JSON-LD Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify(Array.isArray(jsonLdData) ? jsonLdData : jsonLdData)}
+      </script>
     </Helmet>
   );
 };

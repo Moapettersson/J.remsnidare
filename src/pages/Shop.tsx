@@ -128,6 +128,14 @@ useEffect(() => {
       <SEO 
         title="Produkter" 
         description="Upptäck vårt utbud av handgjorda läderprodukter. Väskor, bälten, accessoarer och mer - allt tillverkat med traditionellt hantverk."
+        url="https://sadelmakeriet.se/shop"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Produkter | Sadelmakeriet",
+          "description": "Handgjorda läderprodukter - väskor, bälten, accessoarer och mer.",
+          "url": "https://sadelmakeriet.se/shop"
+        }}
       />
       <div className="min-h-screen">
       {/* Hero Section */}
