@@ -7,19 +7,22 @@ import SEO from "@/components/SEO";
 
 const storySections = [
   {
-    title: "Min historia",
+    title: "Mer än bara sadlar",
     image: leatherImage1,
-    text: "Min kärlek för läderhantverk började redan som ung när jag mötte en traditionell sadelmakare. Fascinationen för hur råa material kunde förvandlas till funktionella och vackra föremål väckte en passion som skulle forma mitt liv."
+    text: "Titeln sadelmakare är idag lite missvisande. Det centrala i allt jag gör är materialet - läder. Ett material som kan användas till det mesta - möbler, väskor, inredning, häst- och hund utrustning etc. Det är kundens fantasi som vanligen sätter begränsningen, inte materialet eller hantverket. Oavsett om ni är intresserade av nytillverkning, reparationer eller utbildning kan jag hjälpa er." 
+
   },
   {
-    title: "Lädrets historia",
+    title: "Läder ett magiskt material",
     image: leatherImage2,
-    text: "Efter flera år som lärling och gesäll öppnade jag mitt första eget sadelmakeri 1985. Målet var att kombinera traditionella tekniker med modern design och funktionalitet. Idag delar vi även vår kunskap genom kurser och workshops."
+    text: "Jag använder bara läder gjort av hudarna från svenska kor, garvat i Tärnsjö. Detta dels för att de håller en hög kvalitet och dels för att jag anser att det är viktigt att minimera vår miljöbelastning och värna djurens välfärd. Produkter tillverkade av bra läder är hållbara och får med tiden en vacker patina. Ärr och nyansskillnader är en naturlig del av materialet och gör varje produkt unik, en vinfläck är inte bara en fläck utan även, förhoppningsvis, ett minne från ett unikt tillfälle."
+
   },
   {
-    title: "Tidlöst och Hållbart",
+    title: "Sadelmakare ett magiskt hantverk:",
     image: leatherImage2,
-    text: "Efter flera år som lärling och gesäll öppnade jag mitt första eget sadelmakeri 1985. Målet var att kombinera traditionella tekniker med modern design och funktionalitet. Idag delar vi även vår kunskap genom kurser och workshops."
+    text: "Redan under medeltiden var sadelmakare ett etablerat yrke i norden. Sedan dess har mycket förändrats men samtidigt är mycket desamma. Förmodligen skulle jag inte ha några problem att gå in på ett sadelmakeri under 1700-talet och sätta mig och börja arbeta.Vår superkraft är att vi kan förvandla läder till färdiga produkter. Produkter där funktion och hållbarhet alltid sätts i centrum, det vackra följer automatiskt."
+
   }
 ];
 
