@@ -274,7 +274,6 @@ useEffect(() => {
           ) : (
             // ── Kommer snart ──────────────────────────────────────
             <div className="flex flex-col items-center justify-center py-24 text-center">
-              <p className="text-4xl mb-4">🛠️</p>
               <h2 className="text-2xl font-semibold text-gray-800 mb-2">Kommer snart</h2>
               <p className="text-muted-foreground max-w-sm">
                 Vi jobbar på att göra våra produkter tillgängliga här. Hör av dig till oss om du redan nu vill beställa något.
