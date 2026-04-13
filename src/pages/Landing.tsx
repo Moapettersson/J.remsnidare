@@ -6,6 +6,7 @@ import saddleImage from "@/assets/showroom/shaire.png"
 import Footer from "@/components/ui/footer";
 import leatherImage1 from "@/assets/sadelmakaren/working.jpg"; 
 import leatherImage2 from "@/assets/knife_brown_leather.jpeg";
+import leatherImage3 from "@/assets/showroom/table.png";
 import SEO from "@/components/SEO";
 
 const storySections = [
@@ -23,7 +24,7 @@ const storySections = [
   },
   {
     title: "Sadelmakare ett magiskt hantverk:",
-    image: leatherImage2,
+    image: leatherImage3,
     text: "Redan under medeltiden var sadelmakare ett etablerat yrke i norden. Sedan dess har mycket förändrats men samtidigt är mycket desamma. Förmodligen skulle jag inte ha några problem att gå in på ett sadelmakeri under 1700-talet och sätta mig och börja arbeta.Vår superkraft är att vi kan förvandla läder till färdiga produkter. Produkter där funktion och hållbarhet alltid sätts i centrum, det vackra följer automatiskt."
 
   }
