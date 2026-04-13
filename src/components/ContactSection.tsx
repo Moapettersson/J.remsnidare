@@ -35,10 +35,10 @@ export const ContactSection = ({
               <div>
                 <h3 className="text-lg mb-2 text-foreground">E-post</h3>
                 <a 
-                  href="mailto:info@sadelmakaren.se"
+                  href="mailto:info@remsnidare.se"
                   className="text-primary hover:underline transition-colors"
                 >
-                  info@sadelmakaren.se
+                  info@remsnidare.se
                 </a>
               </div>
             </div>
