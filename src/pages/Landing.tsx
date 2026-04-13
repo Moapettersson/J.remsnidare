@@ -25,7 +25,7 @@ const storySections = [
   {
     title: "Sadelmakare ett magiskt hantverk:",
     image: leatherImage3,
-    text: "Redan under medeltiden var sadelmakare ett etablerat yrke i norden. Sedan dess har mycket förändrats men samtidigt är mycket desamma. Förmodligen skulle jag inte ha några problem att gå in på ett sadelmakeri under 1700-talet och sätta mig och börja arbeta.Vår superkraft är att vi kan förvandla läder till färdiga produkter. Produkter där funktion och hållbarhet alltid sätts i centrum, det vackra följer automatiskt."
+    text: "Redan under medeltiden var sadelmakare ett etablerat yrke i norden. Sedan dess har mycket förändrats men samtidigt är mycket desamma. Förmodligen skulle jag inte ha några problem att gå in på ett sadelmakeri under 1700-talet och sätta mig och börja arbeta. Vår superkraft är att vi kan förvandla läder till färdiga produkter. Produkter där funktion och hållbarhet alltid sätts i centrum, det vackra följer automatiskt."
 
   }
 ];
@@ -138,7 +138,7 @@ const Landing = () => {
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   {section.title}
                 </h2>
-                <p className="text-lg text-muted-foreground italic leading-relaxed">
+                <p className="text-lg text-muted-foreground leading-relaxed">
                   {section.text}
                 </p>
               </div>
