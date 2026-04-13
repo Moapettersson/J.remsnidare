@@ -80,7 +80,7 @@ const Showroom = () => {
             </a>
 
             <a
-              href="https://tarnsjogarveri.com/leather/our-selection-of-leather/"
+              href="https://tarnsjogarveri.com/lader/"
               target="_blank"
               rel="noopener noreferrer"
             >
