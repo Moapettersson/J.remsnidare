@@ -11,6 +11,10 @@ import furnitureImage2 from "@/assets/sadelmakaren/working.jpg";
 import furnitureImage3 from "@/assets/sadelmakaren/working.jpg";
 import furnitureImage4 from "@/assets/sadelmakaren/working.jpg";
 
+// ─────────────────────────────────────────────
+// 👇 Byt till `true` för att visa produkterna igen
+const SHOW_PRODUCTS = false;
+// ─────────────────────────────────────────────
 
 const Shop = () => {
   const [selectedGroup, setSelectedGroup] = useState("alla");
@@ -70,18 +74,17 @@ const Shop = () => {
   } | order(name asc)`;
 
   // Hämta data från Sanity
-// Hämta data från Sanity
 useEffect(() => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      console.log('🔍 Försöker hämta data från Sanity...'); // ← NYTT
+      console.log('🔍 Försöker hämta data från Sanity...');
       const [productsData, categoriesData] = await Promise.all([
         client.fetch(productsQuery),
         client.fetch(categoriesQuery)
       ]);
-      console.log('📦 Produkter:', productsData); // ← NYTT
-      console.log('🏷️ Kategorier:', categoriesData); // ← NYTT
+      console.log('📦 Produkter:', productsData);
+      console.log('🏷️ Kategorier:', categoriesData);
       setProducts(productsData);
       setCategories(categoriesData);
     } catch (error) {
@@ -150,144 +153,136 @@ useEffect(() => {
           </p>
         </div>
       </section>
-
+      
       {/* Filter Section */}
       <section className="py-8"
         style={{ backgroundColor: "var(--background)" }}>
         <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
-            {groups.map((group) => (
-              <button
-                key={group.id}
-                onClick={() => setSelectedGroup(group.id)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                  selectedGroup === group.id 
-                    ? "bg-primary text-primary-foreground" 
-                    : "bg-muted text-muted-foreground hover:bg-beige-800 hover:text-beige-900"
-                }`}
-              >
-                {group.label}
-              </button>
-            ))}
-          </div>
 
+          {SHOW_PRODUCTS ? (
+            <>
+              {/* ── Filter-knappar ── */}
+              <div className="flex flex-wrap justify-center gap-6 mb-12">
+                {groups.map((group) => (
+                  <button
+                    key={group.id}
+                    onClick={() => setSelectedGroup(group.id)}
+                    className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                      selectedGroup === group.id 
+                        ? "bg-primary text-primary-foreground" 
+                        : "bg-muted text-muted-foreground hover:bg-beige-800 hover:text-beige-900"
+                    }`}
+                  >
+                    {group.label}
+                  </button>
+                ))}
+              </div>
 
-{/* Lindning Special Section - only show when lindning category is selected */}
-{selectedGroup === "lindning" && (
-  <div className="mb-12"
-    style={{ backgroundColor: "var(--background)" }}>
-    <Card className="overflow-hidden bg-gradient-to-r from-primary/5 to-primary/10"
-     style={{ backgroundColor: "var(--background)" }}>
-      <div className="p-8 text-center">
-        <h3 className="text-3xl font-bold mb-4">Lindning</h3>
-        <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-          Behöver du lindning i specifika mått? Vi tillverkar lindningar efter dina
-          exakta behov. Välj färg och dimensioner för att få en personlig offert.
-        </p>
-        <Button
-          size="lg"
-          onClick={() => navigate("/offert-lindning")}
-          className="bg-primary hover:bg-primary/90"
-        >
-          Be om offert för lindning
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
+              {/* ── Lindning Special Section ── */}
+              {selectedGroup === "lindning" && (
+                <div className="mb-12"
+                  style={{ backgroundColor: "var(--background)" }}>
+                  <Card className="overflow-hidden bg-gradient-to-r from-primary/5 to-primary/10"
+                   style={{ backgroundColor: "var(--background)" }}>
+                    <div className="p-8 text-center">
+                      <h3 className="text-3xl font-bold mb-4">Lindning</h3>
+                      <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                        Behöver du lindning i specifika mått? Vi tillverkar lindningar efter dina
+                        exakta behov. Välj färg och dimensioner för att få en personlig offert.
+                      </p>
+                      <Button
+                        size="lg"
+                        onClick={() => navigate("/offert-lindning")}
+                        className="bg-primary hover:bg-primary/90"
+                      >
+                        Be om offert för lindning
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
 
-        {/* Bildgrid - samma bildstil som showroom men i grid-layout */}
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="overflow-hidden rounded-xl shadow-lg">
-            <img
-              src={furnitureImage1}
-              alt="Läderhantverk exempel 1"
-              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-            />
-          </div>
-          <div className="overflow-hidden rounded-xl shadow-lg">
-            <img
-              src={furnitureImage2}
-              alt="Läderhantverk exempel 2"
-              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-            />
-          </div>
-          <div className="overflow-hidden rounded-xl shadow-lg">
-            <img
-              src={furnitureImage3}
-              alt="Läderhantverk exempel 3"
-              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-            />
-          </div>
-          <div className="overflow-hidden rounded-xl shadow-lg">
-            <img
-              src={furnitureImage4}
-              alt="Läderhantverk exempel 4"
-              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-            />
-          </div>
-        </div>
-      </div>
-    </Card>
-  </div>
-)}
+                      <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div className="overflow-hidden rounded-xl shadow-lg">
+                          <img src={furnitureImage1} alt="Läderhantverk exempel 1" className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                        </div>
+                        <div className="overflow-hidden rounded-xl shadow-lg">
+                          <img src={furnitureImage2} alt="Läderhantverk exempel 2" className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                        </div>
+                        <div className="overflow-hidden rounded-xl shadow-lg">
+                          <img src={furnitureImage3} alt="Läderhantverk exempel 3" className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                        </div>
+                        <div className="overflow-hidden rounded-xl shadow-lg">
+                          <img src={furnitureImage4} alt="Läderhantverk exempel 4" className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              )}
 
+              {/* ── Product Grid ── */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredProducts.map((product) => (
+                  <Card 
+                    key={product._id} 
+                    className="overflow-hidden cursor-pointer transition-shadow duration-300 shadow-sm hover:shadow-md border border-gray-100 rounded-lg"
+                    onClick={() => handleProductClick(product)}
+                  >
+                    <div className="w-full aspect-[4/3] bg-gray-50 overflow-hidden">
+                      {product.image ? (
+                        <img 
+                          src={urlFor(product.image).width(600).height(450).fit('crop').url()} 
+                          alt={product.name} 
+                          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-gray-400">
+                          Ingen bild
+                        </div>
+                      )}
+                    </div>
 
-          {/* Product Grid */}
-<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-  
-  {filteredProducts.map((product) => (
-    
-    <Card 
-      key={product._id} 
-      className="overflow-hidden cursor-pointer transition-shadow duration-300 shadow-sm hover:shadow-md border border-gray-100 rounded-lg"
-      onClick={() => handleProductClick(product)}
-    >
-      {/* Produktbild */}
-      <div className="w-full aspect-[4/3] bg-gray-50 overflow-hidden">
-        {product.image ? (
-          <img 
-            src={urlFor(product.image).width(600).height(450).fit('crop').url()} 
-            alt={product.name} 
-            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center text-gray-400">
-            Ingen bild
-          </div>
-        )}
-      </div>
+                    <div className="p-6 text-center font-sans">
+                      <h3 className="text-2xl mb-2 text-gray-900 transition-colors group-hover:text-primary">
+                        {product.name}
+                      </h3>
+                      {product.description && (
+                        <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                          {product.description}
+                        </p>
+                      )}
+                      {product.price && (
+                        <p className="text-gray-800 font-medium text-base mb-4">
+                          {product.price} SEK
+                        </p>
+                      )}
 
-      {/* Produktinfo */}
-      <div className="p-6 text-center font-sans">
-        <h3 className="text-2xl  mb-2 text-gray-900 transition-colors group-hover:text-primary">
-          {product.name}
-        </h3>
-        {product.description && (
-          <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-            {product.description}
-          </p>
-        )}
-        {product.price && (
-          <p className="text-gray-800 font-medium text-base mb-4">
-            {product.price} SEK
-          </p>
-        )}
+                      <Button 
+                        size="sm" 
+                        className="w-full bg-transparent border border-white-800 text-beige-800 hover:bg-beige-800 hover:text-beige-900 transition-all"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleProductClick(product);
+                        }}
+                      >
+                        Välj produkt
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Button>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </>
+          ) : (
+            // ── Kommer snart ──────────────────────────────────────
+            <div className="flex flex-col items-center justify-center py-24 text-center">
+              <p className="text-4xl mb-4">🛠️</p>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-2">Kommer snart</h2>
+              <p className="text-muted-foreground max-w-sm">
+                Vi jobbar på att göra våra produkter tillgängliga här. Hör av dig till oss om du redan nu vill beställa något.
+              </p>
+            </div>
+            // ─────────────────────────────────────────────────────
+          )}
 
-        <Button 
-          size="sm" 
-          className="w-full bg-transparent border border-white-800 text-beige-800 hover:bg-beige-800 hover:text-beige-900 transition-all "
-          onClick={(e) => {
-            e.stopPropagation();
-            handleProductClick(product);
-          }}
-        >
-          Välj produkt
-          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Button>
-      </div>
-    </Card>
-  ))}
-</div>
-
-       
         </div>
       </section>
 
