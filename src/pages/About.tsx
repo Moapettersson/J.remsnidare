@@ -74,7 +74,7 @@ const About = () => {
                 >
                   <div className={`flex flex-col justify-center ${index % 2 === 1 ? "md:order-last" : ""}`}>
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">{section.title}</h2>
-                    <p className="text-lg text-muted-foreground italic leading-relaxed">{section.text}</p>
+                    <p className="text-lg text-muted-foreground  leading-relaxed">{section.text}</p>
                   </div>
                   <div className="overflow-hidden rounded-xl shadow-lg">
                     <img
