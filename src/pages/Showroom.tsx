@@ -69,11 +69,7 @@ const Showroom = () => {
       {/* CEntrerad knapp */}
       {/* Två centrerade knappar */}
           <div className="flex justify-center mt-6 gap-4 ">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSd35Iup_nlptG-ODKW089-l7iT_y16tMiLd_c4xodFR5PKhBA/viewform?usp=header"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="mailto:info@remsnidare.se">
               <Button size="lg" className="hover:bg-beige-800 hover:text-beige-900" >
                 Boka konsultation <ArrowRight className="ml-2 h-5 w-5 " />
               </Button>

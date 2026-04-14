@@ -59,7 +59,7 @@ const Navigation = () => {
     { type: 'link', path: '/showroom', label: 'Inspiration' },
     { type: 'link', path: '/shop', label: 'Produkter' },
     { type: 'link', path: '/kurser', label: 'Kurser' },
-    { type: 'link', path: '/om-oss', label: 'Om Oss' },
+    { type: 'link', path: '/om-oss', label: 'Kontakt' },
   ];
 
   // Dynamiska färger baserat på sektion

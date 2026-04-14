@@ -6,7 +6,7 @@ const navItems = [
   { path: "/showroom", label: "Inspiration" },
   { path: "/shop", label: "Produkter" },
   { path: "/kurser", label: "Kurser" },
-  { path: "/om-oss", label: "Om Oss" },
+  { path: "/om-oss", label: "Kontakt" },
 ];
 
 export default function Footer() {
@@ -45,17 +45,12 @@ export default function Footer() {
             {/* Tillagt: justify-center md:justify-start */}
             <div className="flex justify-center md:justify-start gap-4">
               <a
-                href="mailto:info@sadelmakeriet.se"
+                href="mailto:info@remsnidare.se"
                 className="hover:bg-beige-800 hover:text-beige-900"
               >
                 <Mail className="w-5 h-5" />
               </a>
-              <a
-                href="tel:+4600000000"
-                className="hover:bg-beige-800 hover:text-beige-900"
-              >
-                <Phone className="w-5 h-5" />
-              </a>
+         
               <a
                 href="https://www.instagram.com/j_remsnidare/"
                 target="_blank"
