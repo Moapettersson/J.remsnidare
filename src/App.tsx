@@ -16,6 +16,8 @@ import NotFound from "./pages/NotFound";
 import { CookieConsent } from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
+// Byt till `true` för att visa cookie-bannern igen.
+const SHOW_COOKIE_CONSENT = false;
 
 const App = () => (
   <HelmetProvider>
@@ -36,7 +38,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <CookieConsent />
+          {SHOW_COOKIE_CONSENT && <CookieConsent />}
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

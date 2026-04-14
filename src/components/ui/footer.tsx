@@ -16,18 +16,19 @@ export default function Footer() {
       style={{ backgroundColor: "var(--background)" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        {/* Ändrat från items-start till items-center för att centrera på mobil */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
 
-          {/* Logga / copyright */}
-          <div className="flex flex-col">
+          {/* Logga / copyright - Tillagt: items-center md:items-start */}
+          <div className="flex flex-col items-center md:items-start">
             <span className="font-logo text-2xl mb-2">Sadelmakeriet</span>
             <span className="text-sm text-foreground/70">
               &copy; {new Date().getFullYear()} Alla rättigheter reserverade.
             </span>
           </div>
 
-          {/* Navigationslänkar */}
-          <div className="flex flex-col sm:flex-row gap-6 text-sm md:text-base">
+          {/* Navigationslänkar - Tillagt: items-center */}
+          <div className="flex flex-col sm:flex-row items-center gap-6 text-sm md:text-base">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -40,8 +41,9 @@ export default function Footer() {
           </div>
 
           {/* Social / kontakt */}
-          <div className="flex flex-col gap-2">
-            <div className="flex gap-4">
+          <div className="flex flex-col gap-2 w-full md:w-auto">
+            {/* Tillagt: justify-center md:justify-start */}
+            <div className="flex justify-center md:justify-start gap-4">
               <a
                 href="mailto:info@sadelmakeriet.se"
                 className="hover:bg-beige-800 hover:text-beige-900"
@@ -50,7 +52,7 @@ export default function Footer() {
               </a>
               <a
                 href="tel:+4600000000"
-               className="hover:bg-beige-800 hover:text-beige-900"
+                className="hover:bg-beige-800 hover:text-beige-900"
               >
                 <Phone className="w-5 h-5" />
               </a>
@@ -62,7 +64,6 @@ export default function Footer() {
               >
                 <Instagram className="w-5 h-5" />
               </a>
-        
             </div>
           </div>
 

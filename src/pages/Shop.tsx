@@ -257,14 +257,14 @@ useEffect(() => {
 
                       <Button 
                         size="sm" 
-                        className="w-full bg-transparent border border-white-800 text-beige-800 hover:bg-beige-800 hover:text-beige-900 transition-all"
+                        className="mx-auto hover:bg-beige-800 hover:text-beige-900 transition-all"
                         onClick={(e) => {
                           e.stopPropagation();
                           handleProductClick(product);
                         }}
                       >
                         Välj produkt
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
                     </div>
                   </Card>

@@ -69,11 +69,14 @@ const Landing = () => {
         <div className="absolute inset-0 bg-black/30"></div>
 
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <h1 className="font-logo text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-4 sm:mb-6 leading-tight text-white drop-shadow-lg">
+          <h1 className="font-logo text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight text-white drop-shadow-lg">
             Sadelmakeriet
           </h1>
+          <h2 className="font-logo text-2xl sm:text-1xl md:text-2xl lg:text-5xl mb-1 sm:mb-2 leading-tight text-white drop-shadow-lg">
+            J Remsnidare
+          </h2>
           <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-md px-4">
-            Tradition och förnyelse. 
+            Tradition och förnyelse
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
@@ -105,18 +108,7 @@ const Landing = () => {
 
       {/* About Section */}
       <section id="om-oss" className="min-h-screen bg-background">
-        {/* Hero Section */}
-        <div className="py-20 relative pt-20 pb-16 text-center"
-             style={{ backgroundColor: "var(--background)" }}>
-          {/* Rubrik */}
-          <h1 className="font-logo text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-4 sm:mb-6 leading-tight text-logo-text px-4">
-            Att arbeta med läder
-          </h1>
-          {/* Text */}
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-            Det vackra med läder och dess historia
-          </p>
-        </div>
+
  
         {/* Story Sections */}
         <div className="py-16 px-4 max-w-7xl mx-auto grid gap-16"
